@@ -1,12 +1,18 @@
 const express = require('express');
-const app = express()
+const app = express();
 
+const emailRoutes = require('./services/email');
 
-app.get('/', function(req, res){
-   res.send('Welcome to the Communication Module')
+app.use(express.json());
 
+app.get('/', function (req, res) {
+  res.json({
+    code: 200,
+    app: 'Software Boulevard',
+  })
 });
 
+app.use('/emails', emailRoutes);
 
 app.listen(3000);
 
