@@ -1,1 +1,6 @@
-// TODO implement load/execution of server setup.
+module.exports = {
+  mongodb: {
+    // TODO replace this for an environment variable;
+    uri: 'localhost:27017',
+  },
+};
