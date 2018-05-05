@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-// Add routes to router before export;
+const send = require('./send');
+
+router.post('/send', send);
 
 module.exports = router;
