@@ -43,4 +43,13 @@ const Email = new Schema({
   },
 });
 
+Email.statics.publicFields = () => ({
+  createdAt: 1,
+  sender: 1,
+  subject: 1,
+  receiver: 1,
+  content: 1,
+  acknowledgement: 1,
+});
+
 module.exports = connection.model('Email', Email);

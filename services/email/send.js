@@ -1,37 +1,34 @@
 const { Email } = require('../../models');
 
-module.exports = function (req, res, next) {
-  console.log('Gonna create and send email');
-  // TODO extract the sender from user session;
+module.exports = (req, res) => {
+  const { id: sender } = req.user;
+
   // TODO check whether client information is sanitize;
   // Check that receivers are allowed;
+
   const {
     subject,
-    receiver,
+    receivers,
     content,
   } = req.body;
 
-  // Define with user auth module;
-  const sender = req.user.id;
-
-  Email.create({
-    subject,
-    sender,
-    receiver,
-    content,
-  }, (error, result) => {
-    if (error) {
+  Email
+    .create({
+      sender, receiver: receivers, subject, content,
+    })
+    .then((data) => {
+      const { id } = data.toObject();
+      res
+        .status(200)
+        .json({
+          result_send_email: id,
+        });
+    })
+    .catch((error) => {
       res
         .status(500)
         .json({
-          error,
+          result_send_email: error && error.message ? error.message : error.toString(),
         });
-    }
-
-    res
-      .status(200)
-      .json({
-        data: result,
-      });
-  });
+    });
 };

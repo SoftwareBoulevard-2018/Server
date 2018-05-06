@@ -1,24 +1,17 @@
 const { Email } = require('../../models');
 
-module.exports = function (req, res) {
+module.exports = (req, res) => {
   const { id: receiver } = req.user;
 
-  Email.find({ receiver }, {
-    sender: 1,
-    subject: 1,
-    createdAt: 1,
-    acknowledgement: 1, // TODO map read value;
-  }, (err, result) => {
-    if (err) {
-      res
-      .status(500)
+  Email
+    .find({ receiver })
+    .select(Email.publicFields())
+    .then(result => res
+      .status(200)
       .json({
-        error,
-      });
-    }
-
-    res.json({
-      data: result.map(o => o.toObject()),
-    });
-  });
+        data: result.map(o => o.toObject()),
+      }))
+    .catch(error => res
+      .status(500)
+      .json({ errors: [error.message.toUpperCase()] }));
 };
