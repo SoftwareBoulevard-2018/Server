@@ -6,6 +6,21 @@ module.exports = (req, res) => {
   // TODO check whether client information is sanitize;
   // Check that receivers are allowed;
 
+  req.checkBody('subject','Subject is too long or empty').len({min:1,max:90});
+  req.checkBody('content','Please insert a content').notEmpty();
+  req.checkBody('receivers','Select minimun one reciever').notEmpty();
+
+  
+  const errors = req.getValidationResult();
+  if (!errors.isEmpty()) {
+    return res
+      .status(406)
+      .json({
+         errors: errors.mapped() 
+        });
+  }
+
+
   const {
     subject,
     receivers,

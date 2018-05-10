@@ -4,7 +4,10 @@ const app = express();
 
 const emailRoutes = require('./services/email');
 
+const expressValidator = require('express-validator');
+
 app.use(express.json());
+app.use(expressValidator());
 
 // Middleware to emulate the user request object;
 app.use((req, res, next) => {
