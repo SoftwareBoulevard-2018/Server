@@ -10,14 +10,15 @@ app.use(express.json());
 app.use(expressValidator());
 
 // Middleware to emulate the user request object;v
-app.use(function (error, req, res) {
-  if (!errors.isEmpty()) {
+
+app.use(function ( req, res,next) {
+  if (!req.getValidationResult().isEmpty()) {
     return res
       .status(406)
       .json({
-         errors: errors.mapped() 
+         errors: req.getValidationResult().mapped() 
         });
-  }
+     }
 })
 
 

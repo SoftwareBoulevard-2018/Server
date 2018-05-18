@@ -1,6 +1,20 @@
 const { Email } = require('../../models');
+const { checkSchema } = require('express-validator/check');
 
-module.exports = (req, res) => {
+
+module.exports= [checkSchema({
+  sender :{
+
+  },
+  subject:{
+    isLength:{
+      errorMessage: "Subject must at least 3 char long",
+      options:{min : 4},
+      
+    }
+  },recivers,content})]
+
+/*module.exports = (req, res) => {
   const { id: sender } = req.user;
 
   // TODO check whether client information is sanitize;
@@ -10,15 +24,6 @@ module.exports = (req, res) => {
   req.checkBody('content','Please insert a content').notEmpty();
   req.checkBody('receivers','Select minimun one reciever').notEmpty();
 
-  
-  const errors = req.getValidationResult();
-  if (!errors.isEmpty()) {
-    return res
-      .status(406)
-      .json({
-         errors: errors.mapped() 
-        });
-  }
 
 
   const {
@@ -47,3 +52,5 @@ module.exports = (req, res) => {
         });
     });
 };
+*/
+
