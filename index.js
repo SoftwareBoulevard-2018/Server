@@ -3,6 +3,8 @@ const express = require('express');
 const app = express();
 
 const emailRoutes = require('./services/email');
+const userRoutes = require('./services/user');
+const companyRoutes = require('./services/company');
 
 const expressValidator = require('express-validator');
 
@@ -35,6 +37,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/emails', emailRoutes);
+app.use('/users', userRoutes);
+app.use('/companies', companyRoutes);
 
 app.listen(3000);
 
