@@ -1,8 +1,8 @@
-const { User } = require('../../models');
+const { Company } = require('../../models');
 
 module.exports = (req, res) => {
   //const { id: receiver } = req.user;
-  User
+  Company
       .find()
     .then(result => res
       .status(200)
