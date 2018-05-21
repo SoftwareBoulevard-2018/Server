@@ -1,21 +1,12 @@
-const { User } = require('../../models');
+const { Company } = require('../../models');
 
 module.exports = (req, res) => {
   // const { id: sender } = req.user;
   // TODO check whether client information is sanitize;
   // Check that receivers are allowed;
 
-  const {
-    name,
-    username,
-    password,
-    role,
-  } = req.body;
-
-  User
-    .create({
-      name, username, password, role,
-    })
+  Company
+    .create(req.body)
     .then(() => {
       res
         .status(200)
