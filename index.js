@@ -16,7 +16,7 @@ app.use(expressValidator());
 
 // Middleware to emulate the user request object;v
 
-app.use((req, res, next) => {
+/* app.use((req, res, next) => {
   if (!req.getValidationResult().isEmpty()) {
     return res
       .status(406)
@@ -24,7 +24,7 @@ app.use((req, res, next) => {
         errors: req.getValidationResult().mapped(),
       });
   }
-});
+}); */
 
 app.use((req, res, next) => {
   req.user = { id: 'test_user' };
