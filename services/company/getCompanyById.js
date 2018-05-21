@@ -1,21 +1,21 @@
-const { User } = require('../../models');
+const { Company } = require('../../models');
 
 module.exports = (req, res) => {
-  const { userId } = req.params;
-  //const { id: userId } = req.user;
+  const { companyId } = req.params;
+  // const { id: userId } = req.user;
 
-  User
-    .findById(userId)
+  Company
+    .findById(companyId)
     .then((data) => {
       if (!data) {
         res
           .status(404)
           .json({
-            errors: ['USER_NOT_FOUND'],
+            errors: ['COMPANY_NOT_FOUND'],
           });
         return;
       }
-      /*if ((data.sender !== userId) || (!data.receiver.find(r => r === userId))) {
+      /* if ((data.sender !== userId) || (!data.receiver.find(r => r === userId))) {
         res
           .status(401)
           .json({
@@ -23,11 +23,11 @@ module.exports = (req, res) => {
           });
 
         return;
-      }*/
-      const user = data.toObject();
+      } */
+      const company = data.toObject();
       res
         .status(200)
-        .json(user);
+        .json(company);
     })
     .catch((error) => {
       res
