@@ -9,7 +9,7 @@ const getUserById = require('./getUserById');
 
 router.get('/', getUsers);
 router.post('/', createUser);
-router.put('/', updateUser);
+router.put('/:userId', updateUser);
 router.get('/:userId', getUserById);
 
 module.exports = router;
