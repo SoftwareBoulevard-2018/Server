@@ -2,7 +2,7 @@ const { Email } = require('../../models');
 const { checkSchema } = require('express-validator/check');
 
 
-module.exports= [checkSchema({
+/*module.exports= [checkSchema({
   sender :{
 
   },
@@ -14,7 +14,7 @@ module.exports= [checkSchema({
     }
   },recivers,content})]
 
-/*module.exports = (req, res) => {
+module.exports = (req, res) => {
   const { id: sender } = req.user;
 
   // TODO check whether client information is sanitize;
@@ -51,6 +51,6 @@ module.exports= [checkSchema({
           result_send_email: error && error.message ? error.message : error.toString(),
         });
     });
-};
-*/
+};*/
+
 
