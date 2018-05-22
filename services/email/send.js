@@ -21,10 +21,12 @@ const sendValidation = [
     .withMessage('Subject is too long or empty')
     .matches(/[a-zA-Z0-9]/)
     .withMessage('Email must contain at least one character'),
-  check('content')
-    .not()
-    .isEmpty()
-    .withMessage('Content is empty'),
+  // check('content')
+  //   .not()
+  //   .isEmpty()
+  //   .withMessage('Content is empty')
+  //   .matches(/[a-zA-Z0-9]/)
+  //   .withMessage('Email must contain at least one character'),
   check('receivers')
     .not()
     .isEmpty()
@@ -33,21 +35,23 @@ const sendValidation = [
 
 const send = (req, res) => {
   const { id: sender } = req.user;
+  console.log(req.checkBody.toString());
+  
 
   // TODO check whether client information is sanitize;
   // Check that receivers are allowed;
 
-  // req.checkBody('subject').len({min:1,max:90}).withMessage('Subject is too long or empty');
+  req.checkBody('subject').len({min:1,max:90}).withMessage('Subject is too long or empty');
   // req.checkBody('content').notEmpty().withMessage('Please insert a content');
   // req.checkBody('receivers').notEmpty().withMessage('Select minimun one reciever');
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res
-      .status(406)
-      .json({
-        errors: errors.mapped(),
-      });
-  }
+  // const errors = validationResult(req);
+  // if (!errors.isEmpty()) {
+  //   return res
+  //     .status(406)
+  //     .json({
+  //       errors: errors.mapped(),
+  //     });
+  // }
 
 
   const {
@@ -77,4 +81,4 @@ const send = (req, res) => {
     });
 };
 
-module.exports = {sendValidation,send}
+module.exports = [...sendValidation, send];

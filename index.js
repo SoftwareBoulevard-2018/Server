@@ -9,7 +9,7 @@ const companyRoutes = require('./services/company');
 const authenticationRoutes = require('./services/authentication');
 
 const expressValidator = require('express-validator');
-//const { validationResult } = require('express-validator/check');
+const { validationResult } = require('express-validator/check');
 
 app.use(express.json());
 app.use(cors());
@@ -19,16 +19,22 @@ app.use(expressValidator());
 // Middleware to emulate the user request object;v
 
 app.use((req, res, next) => {
+console.log('Validation middleware 1');
 
-  // const errors = validationResult(req);
-  // if (!errors.isEmpty()) {
-  //   return res
-  //     .status(406)
-  //     .json({
-  //       errors: errors.mapped(),
-  //     });
-  // }
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res
+      .status(406)
+      .json({
+        errors: errors.mapped(),
+      });
+  }
+  
+  console.log('Before next');
+  
   next();
+
+  console.log('Validation middleaware 2');
 });
 
 app.use((req, res, next) => {
