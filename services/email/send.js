@@ -1,18 +1,20 @@
 const { Email } = require('../../models');
-const { checkSchema } = require('express-validator/check');
+const { check } = require('express-validator/check');
 
-
-/*module.exports= [checkSchema({
+/*
+module.exports= [checkSchema({
   sender :{
 
   },
   subject:{
     isLength:{
       errorMessage: "Subject must at least 3 char long",
-      options:{min : 4},
+      options:{min : 3},
       
     }
-  },recivers,content})]
+  },recivers,content}),]
+
+*/
 
 module.exports = (req, res) => {
   const { id: sender } = req.user;
@@ -20,9 +22,9 @@ module.exports = (req, res) => {
   // TODO check whether client information is sanitize;
   // Check that receivers are allowed;
 
-  req.checkBody('subject','Subject is too long or empty').len({min:1,max:90});
-  req.checkBody('content','Please insert a content').notEmpty();
-  req.checkBody('receivers','Select minimun one reciever').notEmpty();
+  req.check('subject').len({min:1,max:90}).withMessage('Subject is too long or empty');
+  req.check('content').notEmpty().withMessage('Please insert a content');
+  req.check('receivers').notEmpty().withMessage('Select minimun one reciever');
 
 
 
@@ -51,6 +53,6 @@ module.exports = (req, res) => {
           result_send_email: error && error.message ? error.message : error.toString(),
         });
     });
-};*/
+};
 
 
