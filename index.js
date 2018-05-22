@@ -9,12 +9,13 @@ const companyRoutes = require('./services/company');
 const authenticationRoutes = require('./services/authentication');
 
 const expressValidator = require('express-validator');
-const { validationResult } = require('express-validator/check');
+//const { validationResult } = require('express-validator/check');
 
 app.use(express.json());
 app.use(cors());
 app.use(expressValidator());
 
+//TODO correct the middleware, the validation only function inside each file.
 // Middleware to emulate the user request object;v
 
 app.use((req, res, next) => {
