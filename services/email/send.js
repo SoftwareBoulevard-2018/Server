@@ -1,5 +1,5 @@
 const { Email } = require('../../models');
-const { check } = require('express-validator/check');
+const { check, validationResult } = require('express-validator/check');
 
 /*
 module.exports= [checkSchema({
@@ -15,17 +15,39 @@ module.exports= [checkSchema({
   },recivers,content}),]
 
 */
+const sendValidation = [
+  check('subject')
+    .isLength({min:1,max:90})
+    .withMessage('Subject is too long or empty')
+    .matches(/[a-zA-Z0-9]/)
+    .withMessage('Email must contain at least one character'),
+  check('content')
+    .not()
+    .isEmpty()
+    .withMessage('Content is empty'),
+  check('receivers')
+    .not()
+    .isEmpty()
+    .withMessage('Select minimum one receiver')
+  ];
 
-module.exports = (req, res) => {
+const send = (req, res) => {
   const { id: sender } = req.user;
 
   // TODO check whether client information is sanitize;
   // Check that receivers are allowed;
 
-  req.check('subject').len({min:1,max:90}).withMessage('Subject is too long or empty');
-  req.check('content').notEmpty().withMessage('Please insert a content');
-  req.check('receivers').notEmpty().withMessage('Select minimun one reciever');
-
+  // req.checkBody('subject').len({min:1,max:90}).withMessage('Subject is too long or empty');
+  // req.checkBody('content').notEmpty().withMessage('Please insert a content');
+  // req.checkBody('receivers').notEmpty().withMessage('Select minimun one reciever');
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res
+      .status(406)
+      .json({
+        errors: errors.mapped(),
+      });
+  }
 
 
   const {
@@ -55,4 +77,4 @@ module.exports = (req, res) => {
     });
 };
 
-
+module.exports = {sendValidation,send}
