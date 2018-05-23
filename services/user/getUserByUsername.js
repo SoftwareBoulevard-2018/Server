@@ -1,25 +1,28 @@
 const { User } = require('../../models');
 
 module.exports = (req, res) => {
-  // const { userId } = req.params;
+  const { username } = req.params;
   // const { id: userId } = req.user;
-
-  const {
-    newUsername,
-    // newPassword,
-  } = req.body;
-
   User
-    .findOne({ username: newUsername })
+    .findOne({ username })
     .then((data) => {
       if (!data) {
         res
           .status(404)
           .json({
-            errors: ['USER_NOT_FOUND'],
+            errors: ['USER_NOT_FOUND', username],
           });
         return;
       }
+      /* if ((data.sender !== userId) || (!data.receiver.find(r => r === userId))) {
+        res
+          .status(401)
+          .json({
+            errors: ['UNAUTHORIZED'],
+          });
+
+        return;
+      } */
       const user = data.toObject();
       res
         .status(200)
