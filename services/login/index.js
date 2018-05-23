@@ -21,7 +21,9 @@ router.post('/', (req, res) => {
         return;
       }
       req.session.user = user;
-      res.status(200).send('Login success');
+      res
+        .status(200)
+        .json(user.toObject());
     })
     .catch((error) => {
       res
