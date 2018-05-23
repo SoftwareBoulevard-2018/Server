@@ -8,12 +8,22 @@ const companyRoutes = require('./services/company');
 const loginRoutes = require('./services/login');
 const logoutRoutes = require('./services/logout');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+
 const app = express();
+
+const connection = require('./models/connection');
+
 
 app.use(express.json());
 app.use(cors());
 app.use(expressValidator());
-app.use(session({ secret: 'anything', resave: false, saveUninitialized: true }));
+app.use(session({
+  secret: 'anything',
+  resave: false,
+  saveUninitialized: true,
+  store: new MongoStore({ mongooseConnection: connection }),
+}));
 
 // Mocking user data;
 app.use((req, res, next) => {
