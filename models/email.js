@@ -40,6 +40,9 @@ const Email = new Schema({
     required: true,
     enum: ['sent', 'read']
   },
+  acknowledgement: {
+  	type: [String]
+  },
 }, {
   timestamps: true,
   toObject: {
