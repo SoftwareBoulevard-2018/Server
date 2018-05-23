@@ -35,7 +35,11 @@ const Email = new Schema({
     type: String,
     required: true,
   },
-  acknowledgement: [readObjects],
+  state: {
+    type: String,
+    required: true,
+    enum: ['sent', 'read']
+  },
 }, {
   timestamps: true,
   toObject: {
@@ -47,7 +51,7 @@ Email.statics.publicFields = () => ({
   createdAt: 1,
   sender: 1,
   subject: 1,
-  receivers: 1,
+  receiver: 1,
   content: 1,
   acknowledgement: 1,
 });
