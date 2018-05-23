@@ -1,7 +1,7 @@
 const { User } = require('../../models');
 
 module.exports = (req, res) => {
-  const { usernameSearch: username } = req.params;
+  const { username } = req.params;
   // const { id: userId } = req.user;
   User
     .findOne({ username })
