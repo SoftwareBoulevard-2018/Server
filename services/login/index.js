@@ -1,18 +1,21 @@
+const express = require('express');
 const { User } = require('../../models');
 
-module.exports = (req, res) => {
+const router = express.Router();
+
+router.post('/', (req, res) => {
   // const { userId } = req.params;
   // const { id: userId } = req.user;
 
   const {
-    newUsername,
-    // newPassword,
+    username,
+    password,
   } = req.body;
 
   User
-    .findOne({ username: newUsername })
-    .then((data) => {
-      if (!data) {
+    .findOne({ username, password })
+    .then((user) => {
+      if (!user) {
         res
           .status(404)
           .json({
@@ -20,10 +23,8 @@ module.exports = (req, res) => {
           });
         return;
       }
-      const user = data.toObject();
-      res
-        .status(200)
-        .json(user);
+      req.session.user = user;
+      res.status(200).send('Login success');
     })
     .catch((error) => {
       res
@@ -32,4 +33,6 @@ module.exports = (req, res) => {
           error: error.toString(),
         });
     });
-};
+});
+
+module.exports = router;
