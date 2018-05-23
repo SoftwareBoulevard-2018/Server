@@ -23,7 +23,7 @@ const Email = new Schema({
     type: String,
     required: true,
   },
-  receiver: {
+  receivers: {
     type: [String],
     required: true,
   },
@@ -35,7 +35,11 @@ const Email = new Schema({
     type: String,
     required: true,
   },
-  acknowledgement: [readObjects],
+  state: {
+    type: String,
+    required: true,
+    enum: ['sent', 'read']
+  },
 }, {
   timestamps: true,
   toObject: {
