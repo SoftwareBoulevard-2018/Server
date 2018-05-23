@@ -38,8 +38,8 @@ app.get('/', (req, res) => {
   });
 });
 
-// Verifies if user is logged in for /users services
-/* app.use('/users', (req, res, next) => {
+/* // Verifies if user is logged in for /users services
+app.use('/users', (req, res, next) => {
   if (!req.session.user) {
     return res.status(401)
       .json({ errors: ['UNAUTHORIZED'] })
