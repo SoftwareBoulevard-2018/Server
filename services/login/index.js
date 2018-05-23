@@ -39,7 +39,7 @@ router.get('/', (req, res) => {
     res
       .status(401)
       .json({
-        errors: ['UNAUTHORIZED'],
+        errors: ['UNAUTHORIZED SESSION'],
       });
     return;
   }

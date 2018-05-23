@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
 });
 
 // Verifies if user is logged in for /users services
-app.use('/users', (req, res, next) => {
+/* app.use('/users', (req, res, next) => {
   if (!req.session.user) {
     return res.status(401)
       .json({ errors: ['UNAUTHORIZED'] })
@@ -47,7 +47,7 @@ app.use('/users', (req, res, next) => {
   }
 
   return next();
-});
+}); */
 
 app.use('/emails', emailRoutes);
 app.use('/users', userRoutes);
