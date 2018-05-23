@@ -7,8 +7,6 @@ const userRoutes = require('./services/user');
 const companyRoutes = require('./services/company');
 const loginRoutes = require('./services/login');
 const logoutRoutes = require('./services/logout');
-
-const expressValidator = require('express-validator');
 const session = require('express-session');
 const app = express();
 
