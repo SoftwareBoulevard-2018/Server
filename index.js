@@ -7,6 +7,7 @@ const emailRoutes = require('./services/email');
 const userRoutes = require('./services/user');
 const companyRoutes = require('./services/company');
 const authenticationRoutes = require('./services/authentication');
+const puzzleRoutes = require('./services/puzzle');
 
 const expressValidator = require('express-validator');
 
@@ -42,6 +43,7 @@ app.use('/emails', emailRoutes);
 app.use('/users', userRoutes);
 app.use('/companies', companyRoutes);
 app.use('/authentication', authenticationRoutes);
+app.use('/puzzle', puzzleRoutes);
 
 app.listen(3000);
 
