@@ -4,9 +4,6 @@ const { User } = require('../../models');
 const router = express.Router();
 
 router.post('/', (req, res) => {
-  // const { userId } = req.params;
-  // const { id: userId } = req.user;
-
   const {
     username,
     password,
@@ -33,6 +30,20 @@ router.post('/', (req, res) => {
           error: error.toString(),
         });
     });
+});
+
+router.get('/', (req, res) => {
+  if (!req.session.user) {
+    res
+      .status(401)
+      .json({
+        errors: ['UNAUTHORIZED'],
+      });
+    return;
+  }
+  res
+    .status(200)
+    .json(req.session.user);
 });
 
 module.exports = router;
