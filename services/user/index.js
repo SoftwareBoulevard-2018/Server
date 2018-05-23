@@ -12,6 +12,6 @@ router.get('/', getUsers);
 router.post('/', createUser);
 router.put('/:userId', updateUser);
 router.get('/:userId', getUserById);
-router.get('/username/:usernameSearch', getUserByUsername);
+router.get('/username/:username', getUserByUsername);
 
 module.exports = router;

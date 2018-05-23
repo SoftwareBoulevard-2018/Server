@@ -1,16 +1,16 @@
 const { User } = require('../../models');
 
 module.exports = (req, res) => {
-  const { usernameSearch } = req.params;
+  const { usernameSearch: username } = req.params;
   // const { id: userId } = req.user;
   User
-    .findOne({ username: usernameSearch })
+    .findOne({ username })
     .then((data) => {
       if (!data) {
         res
           .status(404)
           .json({
-            errors: ['USER_NOT_FOUND', usernameSearch],
+            errors: ['USER_NOT_FOUND', username],
           });
         return;
       }
