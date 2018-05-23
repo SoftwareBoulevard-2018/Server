@@ -23,7 +23,7 @@ const Email = new Schema({
     type: String,
     required: true,
   },
-  receiver: {
+  receivers: {
     type: [String],
     required: true,
   },
@@ -47,7 +47,7 @@ Email.statics.publicFields = () => ({
   createdAt: 1,
   sender: 1,
   subject: 1,
-  receiver: 1,
+  receivers: 1,
   content: 1,
   acknowledgement: 1,
 });

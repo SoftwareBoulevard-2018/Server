@@ -1,31 +1,19 @@
-const express = require('express');
-
-const app = express();
-
 const cors = require('cors');
+const express = require('express');
+const expressValidator = require('express-validator');
+
 const emailRoutes = require('./services/email');
 const userRoutes = require('./services/user');
 const companyRoutes = require('./services/company');
 const authenticationRoutes = require('./services/authentication');
 
-const expressValidator = require('express-validator');
+const app = express();
 
 app.use(express.json());
 app.use(cors());
 app.use(expressValidator());
 
-// Middleware to emulate the user request object;v
-
-/* app.use((req, res, next) => {
-  if (!req.getValidationResult().isEmpty()) {
-    return res
-      .status(406)
-      .json({
-        errors: req.getValidationResult().mapped(),
-      });
-  }
-}); */
-
+// Mocking user data;
 app.use((req, res, next) => {
   req.user = { id: 'test_user' };
   next();
@@ -43,6 +31,6 @@ app.use('/users', userRoutes);
 app.use('/companies', companyRoutes);
 app.use('/authentication', authenticationRoutes);
 
-app.listen(3000);
-
-console.log('Running on port 3000');
+app.listen(3000, () => {
+  console.log('Running on port 3000');
+});

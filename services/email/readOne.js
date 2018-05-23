@@ -1,44 +1,59 @@
+const { param } = require('express-validator/check');
+
 const { Email } = require('../../models');
+const bodyValidation = require('../../helpers/bodyValidation');
 
-module.exports = (req, res) => {
-  const { emailId } = req.params;
-  const { id: userId } = req.user;
+const requestValidation = [
+  param('emailId')
+    .exists()
+    .not()
+    .isEmpty()
+    .isString()
+    .matches(/^[a-fA-F0-9]{24}$/)
+    .withMessage('Email identificator'),
+  bodyValidation,
+];
 
-  Email
-    .findById(emailId)
-    .select(Email.publicFields())
-    .then((data) => {
-      if (!data) {
+module.exports = [
+  ...requestValidation,
+  (req, res) => {
+    const { emailId } = req.params;
+    const { id: userId } = req.user;
+
+    Email
+      .findById(emailId)
+      .select(Email.publicFields())
+      .then((data) => {
+        if (!data) {
+          res
+            .status(404)
+            .json({
+              errors: ['EMAIL_NOT_FOUND'],
+            });
+
+          return;
+        }
+
+        if ((data.sender !== userId) && (!data.receivers.find(r => r === userId))) {
+          res
+            .status(401)
+            .json({
+              errors: ['USER_UNAUTHORIZED'],
+            });
+
+          return;
+        }
+
         res
-          .status(404)
-          .json({
-            errors: ['EMAIL_NOT_FOUND'],
-          });
-
-        return;
-      }
-
-      if ((data.sender !== userId) || (!data.receiver.find(r => r === userId))) {
+          .status(200)
+          .json(data.toObject());
+      })
+      .catch((error) => {
         res
-          .status(401)
+          .status(500)
           .json({
-            errors: ['UNAUTHORIZED'],
+            error: error.toString(),
           });
-
-        return;
-      }
-
-      const email = data.toObject();
-
-      res
-        .status(200)
-        .json(email);
-    })
-    .catch((error) => {
-      res
-        .status(500)
-        .json({
-          error: error.toString(),
-        });
-    });
-};
+      });
+  },
+];

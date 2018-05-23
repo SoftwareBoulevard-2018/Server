@@ -4,6 +4,6 @@ const Company = require('./company');
 
 module.exports = {
   Email,
-    User,
-    Company,
+  User,
+  Company,
 };
