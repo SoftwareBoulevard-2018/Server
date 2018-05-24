@@ -1,11 +1,12 @@
 const { Email } = require('../../models');
 
 module.exports = (req, res) => {
-  const { id: receiver } = req.user;
+  const { id: receivers } = req.user;
 
   Email
-    .find({ receiver })
+    .find({ receivers })
     .select(Email.publicFields())
+    .sort({ createdAt: -1 })
     .then(result => res
       .status(200)
       .json({
