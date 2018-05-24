@@ -6,17 +6,9 @@ const { Schema } = mongoose;
 
 const Puzzle = new Schema({
 	rewarded_resources: {
-	 type: String,
+	 type: Number,
      required: true,
-    },
-	slicedImage: {
-	 type: [String],
-	 required: true,
-	},
-	image: {
-	 type: String,
-	 required: true,
-	},
+    }
 }, {
 	 timestamps: true,
 	 toObject: {

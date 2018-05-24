@@ -53,7 +53,7 @@ app.use('/users', (req, res, next) => {
 app.use('/emails', emailRoutes);
 app.use('/users', userRoutes);
 app.use('/companies', companyRoutes);
-app.use('/puzzle', puzzleRoutes);
+app.use('/puzzles', puzzleRoutes);
 app.use('/login', loginRoutes);
 app.use('/logout', logoutRoutes);
 

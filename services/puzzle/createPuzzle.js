@@ -1,18 +1,18 @@
 const { Puzzle } = require('../../models');
 
 module.exports = (req, res) => {
-
-
-
-	 Puzzle
-	  .create(req.body)
-	  .then( () => {
+  
+	Puzzle
+	  .create({
+		req.body
+	   })
+	  .then(() => {
 		 res
 			.status(200)
 			.json({
 				result: 'success',
 			});
-	  })
+	   })
 		.catch((error) => {
 			res
 			.status(500)
@@ -20,4 +20,4 @@ module.exports = (req, res) => {
 				result: error && error.message ? error.message : error.toString(),
 			});
 		});
-	};
+};

@@ -7,4 +7,5 @@ module.exports = {
   Email,
   User,
   Company,
+  Puzzle
 };
