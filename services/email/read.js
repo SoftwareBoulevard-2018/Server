@@ -1,18 +1,19 @@
 const { Email } = require('../../models');
 
 module.exports = (req, res) => {
-  const { id: receivers } = req.user;
-
+  const { id } = req.params;
   Email
-    .find({ receivers })
+    .find()
+    .where("receivers").equals(id)
     .select(Email.publicFields())
     .sort({ createdAt: -1 })
     .then(result => res
       .status(200)
       .json({
-        data: result.map(o => o.toObject()),
-      }))
+        data: result.map(o => o.toObject())    
+      })
+      .json({culpa: [req.params.value]}))
     .catch(error => res
-      .status(500)
-      .json({ errors: [error.message.toUpperCase()] }));
+      .status(200)
+      .json({ errors: error.toString() }));
 };

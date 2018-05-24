@@ -6,7 +6,7 @@ const send = require('./send');
 
 const router = express.Router();
 
-router.get('/', read);
+router.get('/read/:id', read);
 router.post('/send', send);
 router.get('/:emailId', readOne);
 
