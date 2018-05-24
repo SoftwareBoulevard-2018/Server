@@ -5,10 +5,7 @@ const expressValidator = require('express-validator');
 const emailRoutes = require('./services/email');
 const userRoutes = require('./services/user');
 const companyRoutes = require('./services/company');
-<<<<<<< HEAD
-const authenticationRoutes = require('./services/authentication');
 const puzzleRoutes = require('./services/puzzle');
-=======
 const loginRoutes = require('./services/login');
 const logoutRoutes = require('./services/logout');
 const session = require('express-session');
@@ -17,7 +14,6 @@ const MongoStore = require('connect-mongo')(session);
 const app = express();
 
 const connection = require('./models/connection');
->>>>>>> develop
 
 
 app.use(express.json());
@@ -57,13 +53,9 @@ app.use('/users', (req, res, next) => {
 app.use('/emails', emailRoutes);
 app.use('/users', userRoutes);
 app.use('/companies', companyRoutes);
-<<<<<<< HEAD
-app.use('/authentication', authenticationRoutes);
 app.use('/puzzle', puzzleRoutes);
-=======
 app.use('/login', loginRoutes);
 app.use('/logout', logoutRoutes);
->>>>>>> develop
 
 
 app.listen(3000, () => {

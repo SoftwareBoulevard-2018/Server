@@ -5,11 +5,6 @@ const Puzzle = require('./puzzle');
 
 module.exports = {
   Email,
-<<<<<<< HEAD
-    User,
-    Company,
-	Puzzle,
   User,
   Company,
->>>>>>> develop
 };
