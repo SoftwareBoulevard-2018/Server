@@ -7,12 +7,13 @@ const createUser = require('./createUser');
 const updateUser = require('./updateUser');
 const getUserById = require('./getUserById');
 const getUserByUsername = require('./getUserByUsername');
+const getUserByCompanyRole = require('./getUserByCompanyRole');
 
 router.get('/', getUsers);
 router.post('/', createUser);
 router.put('/:userId', updateUser);
 router.get('/:userId', getUserById);
 router.get('/username/:username', getUserByUsername);
-router.post('/username', getUserByUsername);
+router.post('/username', getUserByCompanyRole);
 
 module.exports = router;
