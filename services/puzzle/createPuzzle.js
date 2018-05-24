@@ -3,9 +3,9 @@ const { Puzzle } = require('../../models');
 module.exports = (req, res) => {
   
 	Puzzle
-	  .create({
+	  .create(
 		req.body
-	   })
+	   )
 	  .then(() => {
 		 res
 			.status(200)
