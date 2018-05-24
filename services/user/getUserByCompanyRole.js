@@ -3,14 +3,14 @@ const { User } = require('../../models');
 module.exports = (req, res) => {
 
     const {
-        companyId,
         role,
+        companyId,
     } = req.body;
 
     User
-        .findOne({ companyId, role })
-        .then((user) => {
-            if (!user) {
+        .findOne({ role, companyId })
+        .then((users) => {
+            if (!users) {
                 res
                     .status(404)
                     .json({
@@ -18,10 +18,9 @@ module.exports = (req, res) => {
                     });
                 return;
             }
-            req.session.user = user;
             res
                 .status(200)
-                .json(user.toObject());
+                .json(users);
         })
         .catch((error) => {
             res
