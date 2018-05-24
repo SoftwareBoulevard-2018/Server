@@ -1,10 +1,11 @@
-import { BiddingProject } from "../../models/biddingProject";
+const { BiddingProject } = require("../../models"); 
 
-export default function (req, res) {
+module.exports = (req, res) => {
   // const { id: sender } = req.user;
   // TODO check whether client information is sanitize;
   // Check that receivers are allowed;
-  Project
+
+  BiddingProject
     .create(req.body)
     .then(() => {
       res
