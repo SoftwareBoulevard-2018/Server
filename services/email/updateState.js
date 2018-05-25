@@ -27,7 +27,9 @@ const updateState = (req, res) => {
         $addToSet : {acknowledgment : userId}
     })
     .then((data) => {
-        if (!data) {
+      console.log(data);
+      
+        if (data.n===0) {
           res
             .status(404)
             .json({
