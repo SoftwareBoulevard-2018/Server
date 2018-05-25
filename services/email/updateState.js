@@ -1,3 +1,6 @@
+//TODO delete this file if the readOne service including the last part actuallt¡y works
+
+
 const { check } = require('express-validator/check');
 
 const bodyValidation = require('../../helpers/bodyValidation');

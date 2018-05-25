@@ -1,7 +1,7 @@
 const { Email } = require('../../models');
 
 module.exports = (req, res) => {
-    const { id: sender } = req.user;
+    const { _id: sender } = req.session.user;
   
     Email
       .find({ sender })

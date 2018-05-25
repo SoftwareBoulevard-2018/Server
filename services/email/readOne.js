@@ -18,7 +18,7 @@ module.exports = [
   ...requestValidation,
   (req, res) => {
     const { emailId } = req.params;
-    const { id: userId } = req.user;
+    const { _id: userId } = req.session.user;
 
     Email
       .findById(emailId)
@@ -44,9 +44,13 @@ module.exports = [
           return;
         }
 
-        res
-          .status(200)
-          .json(data.toObject());
+        Email
+          .update({ _id : emailId} ,{ $addToSet : {acknowledgment : userId}})
+          .then((data1)=>{
+            res
+              .status(200)
+              .json(data.toObject());
+            });
       })
       .catch((error) => {
         res

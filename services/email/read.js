@@ -1,7 +1,7 @@
 const { Email } = require('../../models');
 
 module.exports = (req, res) => {
-  const { id } = req.params;
+  const { id } = req.session.user._id;
   Email
     .find()
     .where("receivers").equals(id)

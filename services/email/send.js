@@ -23,7 +23,7 @@ const sendValidation = [
 ];
 
 const send = (req, res) => {
-  const { id: sender } = req.user;
+  const { _id: sender } = req.session.user;
 
   const {
     subject,
