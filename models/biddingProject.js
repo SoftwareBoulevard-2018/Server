@@ -40,12 +40,7 @@ const BiddingProject = new Schema({
   required_analyst_level: {
     type: Number,
   },
-}, {
-  timestamps: true,
-  toObject: {
-    virtuals: true,
-  },
-});
+},{collection: 'projects' });
 
 BiddingProject.statics.publicFields = () => ({
   numberOfDevelopingQuestionsPerAnalyst: 1,

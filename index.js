@@ -10,8 +10,8 @@ const loginRoutes = require('./services/login');
 const logoutRoutes = require('./services/logout');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
-const BiddingProjectRoutes = require('./services/project');
-const InstantProjectRoutes = require('./services/project');
+const BiddingProjectRoutes = require('./services/biddingProject');
+const InstantProjectRoutes = require('./services/instantProject');
 
 const app = express();
 
@@ -58,8 +58,8 @@ app.use('/companies', companyRoutes);
 app.use('/puzzles', puzzleRoutes);
 app.use('/login', loginRoutes);
 app.use('/logout', logoutRoutes);
-app.use('/projects', BiddingProjectRoutes);
-app.use('/projects', InstantProjectRoutes);
+app.use('/biddingProjects', BiddingProjectRoutes);
+app.use('/instantProjects', InstantProjectRoutes);
 
 
 app.listen(3000, () => {

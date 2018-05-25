@@ -22,12 +22,8 @@ const InstantProject = new Schema({
   rewarded_K: {
     type: Number,
   },
-}, {
-  timestamps: true,
-  toObject: {
-    virtuals: true,
-  },
-});
+},
+{collection: 'projects' });
 
 InstantProject.statics.publicFields = () => ({
   numberOfDevelopingQuestionsPerAnalyst: 1,
