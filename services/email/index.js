@@ -5,7 +5,6 @@ const readOne = require('./readOne');
 const send = require('./send');
 const sended = require('./sended');
 const updateState = require('./updateState');
-const listUsers = require('./listUsers');
 
 const router = express.Router();
 

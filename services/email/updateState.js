@@ -16,7 +16,7 @@ const updateStateValidation = [
 ];
 
 const updateState = (req, res) => {
-    const { emailId } = req.params;
+    const { emailId } = req.body;
     const { id: userId } = req.user;
 
   Email
@@ -24,7 +24,7 @@ const updateState = (req, res) => {
         _id:emailId
     },
     {
-        $addToSet : {acknowledgment : id}
+        $addToSet : {acknowledgment : userId}
     })
     .then((data) => {
         if (!data) {
@@ -37,7 +37,7 @@ const updateState = (req, res) => {
           return;
         }
 
-        if ((data.sender !== userId) && (!data.receivers.find(r => r === userId))) {
+        if ((!data.receivers.find(r => r === userId))) {
           res
             .status(401)
             .json({
