@@ -11,6 +11,6 @@ module.exports = {
   Company,
   Puzzle,
   BiddingProject,
-  InstantProject
+  InstantProject,
   
 };

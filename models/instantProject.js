@@ -12,25 +12,28 @@ const InstantProject = new Schema({
   },
   numberOfDevelopingQuestionsPerAnalyst: {
     type: Number,
-    default: 0,
   },
   numberOfDevelopingQuestionsPerDeveloper: {
     type: Number,
-    default: 0,
   },
   numberOfDevelopingQuestionsPerTester: {
     type: Number,
-    default: 0,
   },
   rewarded_K: {
     type: Number,
-    default: 0,
   },
 }, {
   timestamps: true,
   toObject: {
     virtuals: true,
   },
+});
+
+InstantProject.statics.publicFields = () => ({
+  numberOfDevelopingQuestionsPerAnalyst: 1,
+  numberOfDevelopingQuestionsPerDeveloper: 1,
+  numberOfDevelopingQuestionsPerTester: 1,
+  rewarded_K: 1,
 });
 
 module.exports = connection.model('InstantProject', InstantProject);

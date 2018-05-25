@@ -12,49 +12,53 @@ const BiddingProject = new Schema({
   },
   numberOfDevelopingQuestionsPerAnalyst: {
     type: Number,
-    default: 0,
   },
   numberOfDevelopingQuestionsPerDeveloper: {
     type: Number,
-    default: 0,
   },
   numberOfDevelopingQuestionsPerTester: {
     type: Number,
-    default: 0,
   },
   required_K: {
-    type: String,
-    default: null,
+    type: Number,
   },
   rewarded_K: {
     type: Number,
-    default: 0,
   },
   cost: {
     type: Number,
-    default: 0,
   },
   time: {
     type: Number,
-    default: 0,
   },
   required_tester_level: {
     type: Number,
-    default: 0,
   },
   required_developer_level: {
     type: Number,
-    default: 0,
   },
   required_analyst_level: {
     type: Number,
-    default: 0,
   },
 }, {
   timestamps: true,
   toObject: {
     virtuals: true,
   },
+});
+
+BiddingProject.statics.publicFields = () => ({
+  numberOfDevelopingQuestionsPerAnalyst: 1,
+  numberOfDevelopingQuestionsPerDeveloper: 1,
+  numberOfDevelopingQuestionsPerTester: 1,
+  required_K: 1,
+  rewarded_K: 1,
+  cost: 1,
+  time: 1,
+  required_tester_level: 1,
+  required_developer_level: 1,
+  required_analyst_level: 1,
+
 });
 
 module.exports = connection.model('BiddingProject', BiddingProject);

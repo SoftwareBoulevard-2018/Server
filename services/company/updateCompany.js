@@ -31,4 +31,4 @@ module.exports = (req, res) => {
           result: error && error.message ? error.message : error.toString(),
         });
     });
-};
+}; 
