@@ -47,7 +47,10 @@ module.exports = [
         res
           .status(200)
           .json(data.toObject());
-        Email.update({ _id : emailId} ,{ $addToSet : {acknowledgment : userId}}).exec();
+        
+        Email
+          .update({ _id : emailId} ,{ $addToSet : {acknowledgment : userId}})
+          .exec();
       })
       .catch((error) => {
         res
