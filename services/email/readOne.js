@@ -44,13 +44,10 @@ module.exports = [
           return;
         }
 
-        Email
-          .update({ _id : emailId} ,{ $addToSet : {acknowledgment : userId}})
-          .then((data1)=>{
-            res
-              .status(200)
-              .json(data.toObject());
-            });
+        res
+          .status(200)
+          .json(data.toObject());
+        Email.update({ _id : emailId} ,{ $addToSet : {acknowledgment : userId}}).exec();
       })
       .catch((error) => {
         res
