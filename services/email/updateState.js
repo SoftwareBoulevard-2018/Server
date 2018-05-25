@@ -16,7 +16,7 @@ const updateStateValidation = [
       .matches(/^[a-fA-F0-9]{24}$/)
       .withMessage('Email identificator'),
     bodyValidation,
-];
+];  
 
 const updateState = (req, res) => {
     const { emailId } = req.body;
