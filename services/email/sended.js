@@ -1,10 +1,10 @@
 const { Email } = require('../../models');
 
 module.exports = (req, res) => {
-    const { id: sender } = req.user;
-  
+    const { id } = req.params;
     Email
-      .find({ sender })
+      .find()
+      .where("sender").equals(id)
       .select(Email.publicFields())
       .sort({ createdAt: -1 })
       .then(result => res
