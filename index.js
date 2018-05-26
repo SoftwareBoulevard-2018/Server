@@ -61,7 +61,6 @@ app.use('/logout', logoutRoutes);
 app.use('/biddingProjects', BiddingProjectRoutes);
 app.use('/instantProjects', InstantProjectRoutes);
 
-
 app.listen(3000, () => {
   console.log('Running on port 3000');
 });

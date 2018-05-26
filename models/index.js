@@ -12,5 +12,4 @@ module.exports = {
   Puzzle,
   BiddingProject,
   InstantProject,
-  
 };
