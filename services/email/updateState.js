@@ -2,34 +2,14 @@ const { check } = require('express-validator/check');
 
 const bodyValidation = require('../../helpers/bodyValidation');
 const { Email } = require('../../models');
-
-
-const updateStateValidation = [
-    check('emailId')
-      .exists()
-      .not()
-      .isEmpty()
-      .isString()
-      .matches(/^[a-fA-F0-9]{24}$/)
-      .withMessage('Email identificator'),
-    bodyValidation,
-];
-
-const updateState = (req, res) => {
-    const { emailId } = req.body;
-    const { id: userId } = req.user;
+module.exports = (req, res) => {
+    const { emailId } = req.params;
 
   Email
-    .update({
-        _id:emailId
-    },
-    {
-        $addToSet : {acknowledgment : userId}
-    })
+   .findByIdAndUpdate(emailId, req.body)
     .then((data) => {
       console.log(data);
-      
-        if (data.n===0) {
+        if (!data) {
           res
             .status(404)
             .json({
@@ -55,11 +35,8 @@ const updateState = (req, res) => {
       })
       .catch((error) => {
         res
-          .status(500)
           .json({
             error: error.toString(),
           });
       });
 };
-
-module.exports = [...updateStateValidation, updateState];
