@@ -1,23 +1,13 @@
-const { Company } = require('../../models');
+const { BiddingProject } = require("../../models"); 
 
 module.exports = (req, res) => {
-  const { companyId } = req.params;
   // const { id: sender } = req.user;
-
   // TODO check whether client information is sanitize;
   // Check that receivers are allowed;
 
-  Company
-    .findByIdAndUpdate(companyId, req.body)
-    .then((data) => {
-      if (!data) {
-        res
-          .status(404)
-          .json({
-            errors: ['COMPANY_NOT_FOUND'],
-          });
-        return;
-      }
+  BiddingProject
+    .create(req.body)
+    .then(() => {
       res
         .status(200)
         .json({
@@ -31,4 +21,4 @@ module.exports = (req, res) => {
           result: error && error.message ? error.message : error.toString(),
         });
     });
-}; 
+};

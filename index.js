@@ -5,10 +5,13 @@ const expressValidator = require('express-validator');
 const emailRoutes = require('./services/email');
 const userRoutes = require('./services/user');
 const companyRoutes = require('./services/company');
+const puzzleRoutes = require('./services/puzzle');
 const loginRoutes = require('./services/login');
 const logoutRoutes = require('./services/logout');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const BiddingProjectRoutes = require('./services/biddingProject');
+const InstantProjectRoutes = require('./services/instantProject');
 
 const app = express();
 
@@ -53,9 +56,11 @@ app.use('/users', (req, res, next) => {
 app.use('/emails', emailRoutes);
 app.use('/users', userRoutes);
 app.use('/companies', companyRoutes);
+app.use('/puzzles', puzzleRoutes);
 app.use('/login', loginRoutes);
 app.use('/logout', logoutRoutes);
-
+app.use('/biddingProjects', BiddingProjectRoutes);
+app.use('/instantProjects', InstantProjectRoutes);
 
 app.listen(3000, () => {
   console.log('Running on port 3000');

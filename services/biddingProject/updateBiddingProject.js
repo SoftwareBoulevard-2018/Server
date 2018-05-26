@@ -1,20 +1,20 @@
-const { Company } = require('../../models');
+const { BiddingProject } = require('../../models');
 
 module.exports = (req, res) => {
-  const { companyId } = req.params;
+  const { name } = req.params;
   // const { id: sender } = req.user;
 
   // TODO check whether client information is sanitize;
   // Check that receivers are allowed;
 
-  Company
-    .findByIdAndUpdate(companyId, req.body)
+  BiddingProject
+    .findByIdAndUpdate(name, req.body)
     .then((data) => {
       if (!data) {
         res
           .status(404)
           .json({
-            errors: ['COMPANY_NOT_FOUND'],
+            errors: ['BiddingProject_NOT_FOUND'],
           });
         return;
       }
@@ -31,4 +31,4 @@ module.exports = (req, res) => {
           result: error && error.message ? error.message : error.toString(),
         });
     });
-}; 
+};
