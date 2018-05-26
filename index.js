@@ -18,6 +18,7 @@ const connection = require('./models/connection');
 app.use(express.json());
 app.use(cors());
 app.use(expressValidator());
+//session and validations aren't yet fully implemented
 app.use(session({
   secret: 'anything',
   resave: false,
