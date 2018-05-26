@@ -1,7 +1,7 @@
 {
-  "name": "server_softwareboulevard",
+  "name": "software_boulevard",
   "version": "1.0.0",
-  "description": "Communication module",
+  "description": "DSD project",
   "main": "index.js",
   "dependencies": {
     "bluebird": "3.5.1",
@@ -22,15 +22,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MrPaul91/Module5Server_SoftwareBoulevard.git"
+    "url": "https://github.com/SoftwareBoulevard-2018/Server.git"
   },
-  "keywords": [
-    "Email"
-  ],
-  "author": "Juan Pablo V.G. and Leon Dario Peña",
+  "keywords": [],
+  "author": "DSD group",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MrPaul91/Module5Server_SoftwareBoulevard/issues"
+    "url": "https://github.com/SoftwareBoulevard-2018/Server/issues"
   },
-  "homepage": "https://github.com/MrPaul91/Module5Server_SoftwareBoulevard#readme"
+  "homepage": "https://github.com/SoftwareBoulevard-2018/Server"
 }
