@@ -3,15 +3,16 @@ const { Question } = require('../../models');
 module.exports = (req, res) => {
 
 			const{
+				role,
 				question,
 				description,
-				answers
+				answers,
 			} = req.body;
 
 
 	Question
 		  .create({
-			question, description,answers
+			role,question, description,answers
 		  })
 		  .then(() => {
 			 res
