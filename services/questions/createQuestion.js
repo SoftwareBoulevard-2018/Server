@@ -6,13 +6,20 @@ module.exports = (req, res) => {
 				role,
 				question,
 				description,
-				answers,
+				answer1,
+				veracity1,
+				answer2,
+				veracity2,
+				answer3,
+				veracity3,
+				answer4,
+				veracity4
 			} = req.body;
 
 
 	Question
 		  .create({
-			role,question, description,answers
+			role, question, description, answer1, veracity1, answer2, veracity2, answer3, veracity3,answer4, veracity4
 		  })
 		  .then(() => {
 			 res
