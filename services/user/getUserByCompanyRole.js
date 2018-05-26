@@ -8,7 +8,7 @@ module.exports = (req, res) => {
     } = req.body;
 
     User
-        .findOne({ role, companyId })
+        .find({ role, companyId })
         .then((users) => {
             if (!users) {
                 res
