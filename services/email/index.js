@@ -9,9 +9,9 @@ const updateState = require('./updateState');
 const router = express.Router();
 
 router.get('/read/:id', read);
-router.post('/send', send);
+router.post('/send/', send);
 router.get('/:emailId', readOne);
-router.get('/sended',sended);
-router.put('/updateState',updateState);
+router.get('/sended/:id',sended);
+router.put('/updateState/',updateState);
 
 module.exports = router;
