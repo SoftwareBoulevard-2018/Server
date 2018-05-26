@@ -24,7 +24,7 @@ const sendValidation = [
 
 const send = (req, res) => {
   const {
-    sender
+    sender,
     subject,
     receivers,
     content,
