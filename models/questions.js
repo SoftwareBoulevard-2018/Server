@@ -19,7 +19,7 @@ const Questions = new Schema({
 				type: String,
 				required: true
 			}
-			ifTrue:{
+			veracity1:{
 				type: Boolean,
 				required: true
 			}
@@ -30,7 +30,7 @@ const Questions = new Schema({
 				type: String,
 				required: true
 			}
-			ifTrue:{
+			veracity2:{
 				type: Boolean,
 				required: true
 			}
@@ -40,7 +40,7 @@ const Questions = new Schema({
 				type: String,
 				required: true
 			}
-			ifTrue:{
+			veracity3:{
 				type: Boolean,
 				required: true
 			}
@@ -51,7 +51,7 @@ const Questions = new Schema({
 				type: String,
 				required: true
 			}
-			ifTrue:{
+			veracity4:{
 				type: Boolean,
 				required: true
 			}
@@ -63,4 +63,4 @@ const Questions = new Schema({
 
 });
 
-module.exports = connection.model('Questions', Questions;
+module.exports = connection.model('Questions', Questions);
