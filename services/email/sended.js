@@ -5,7 +5,6 @@ module.exports = (req, res) => {
     Email
       .find()
       .where("sender").equals(id)
-      .select(Email.publicFields())
       .sort({ createdAt: -1 })
       .then(result => res
         .status(200)
