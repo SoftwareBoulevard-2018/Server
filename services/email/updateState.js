@@ -18,17 +18,6 @@ module.exports = (req, res) => {
 
           return;
         }
-
-        if ((!data.receivers.find(r => r === userId))) {
-          res
-            .status(401)
-            .json({
-              errors: ['USER_UNAUTHORIZED'],
-            });
-
-          return;
-        }
-
         res
           .status(200)
           .json(data.toObject());
