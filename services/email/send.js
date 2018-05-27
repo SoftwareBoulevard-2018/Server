@@ -23,31 +23,40 @@ const sendValidation = [
 ];
 
 const send = (req, res) => {
-  const {
-    sender,
-    subject,
-    receivers,
-    content,
-  } = req.body;
+  if (!(typeof req.session.user === "undefined")) {
+    const { _id: sender } = req.session.user;
 
-  Email
-    .create({
-      sender, receivers, subject, content,
-    })
-    .then((data) => {
-      res
-        .status(200)
-        .json({
-          data: data.toObject(),
-        });
-    })
-    .catch((error) => {
-      res
-        .status(500)
-        .json({
-          result_send_email: error && error.message ? error.message : error.toString(),
-        });
-    });
+    const {
+      subject,
+      receivers,
+      content,
+    } = req.body;
+
+    Email
+      .create({
+        sender, receivers, subject, content,
+      })
+      .then((data) => {
+        res
+          .status(200)
+          .json({
+            data: data.toObject(),
+          });
+      })
+      .catch((error) => {
+        res
+          .status(500)
+          .json({
+            result_send_email: error && error.message ? error.message : error.toString(),
+          });
+      });
+  }
+  else {
+    res
+      .status(401)
+      .json({ errors: "user_not_logged" });
+  }
+
 };
 
 module.exports = [...sendValidation, send];
