@@ -12,6 +12,6 @@ router.get('/read/:id', read);
 router.post('/send/', send);
 router.get('/:emailId', readOne);
 router.get('/sended/:id',sended);
-router.put('/updateState/',updateState);
+router.put('/updateState/:emailId',updateState);
 
 module.exports = router;
