@@ -11,8 +11,7 @@ module.exports = (req, res) => {
       .status(200)
       .json({
         data: result.map(o => o.toObject())    
-      })
-      .json({culpa: [req.params.value]}))
+      }))
     .catch(error => res
       .status(200)
       .json({ errors: error.toString() }));
