@@ -17,47 +17,55 @@ const requestValidation = [
 module.exports = [
   ...requestValidation,
   (req, res) => {
-    const { emailId } = req.params;
-    const { _id: userId } = req.session.user;
+    if (!(typeof req.session.user === "undefined")) {
+      const { emailId } = req.params;
+      const { _id: userId } = req.session.user;
 
-    Email
-      .findById(emailId)
-      .select(Email.publicFields())
-      .then((data) => {
-        if (!data) {
+      Email
+        .findById(emailId)
+        .select(Email.publicFields())
+        .then((data) => {
+          if (!data) {
+            res
+              .status(404)
+              .json({
+                errors: ['EMAIL_NOT_FOUND'],
+              });
+
+            return;
+          }
+
+          if ((data.sender !== userId) && (!data.receivers.find(r => r === userId))) {
+            res
+              .status(401)
+              .json({
+                errors: ['USER_UNAUTHORIZED'],
+              });
+
+            return;
+          }
+
           res
-            .status(404)
-            .json({
-              errors: ['EMAIL_NOT_FOUND'],
-            });
+            .status(200)
+            .json(data.toObject());
 
-          return;
-        }
-
-        if ((data.sender !== userId) && (!data.receivers.find(r => r === userId))) {
+          Email
+            .update({ _id: emailId }, { $addToSet: { acknowledgment: userId } })
+            .exec();
+        })
+        .catch((error) => {
           res
-            .status(401)
+            .status(500)
             .json({
-              errors: ['USER_UNAUTHORIZED'],
+              error: error.toString(),
             });
+        });
+    }
+    else {
+      res
+        .status(401)
+        .json({ errors: "user_not_logged" });
+    }
 
-          return;
-        }
-
-        res
-          .status(200)
-          .json(data.toObject());
-        
-        Email
-          .update({ _id : emailId} ,{ $addToSet : {acknowledgment : userId}})
-          .exec();
-      })
-      .catch((error) => {
-        res
-          .status(500)
-          .json({
-            error: error.toString(),
-          });
-      });
-  },
+  }
 ];
