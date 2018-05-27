@@ -1,7 +1,6 @@
 const express = require('express');
 
 const read = require('./read');
-const readOne = require('./readOne');
 const send = require('./send');
 const sent = require('./sent');
 const updateState = require('./updateState');
