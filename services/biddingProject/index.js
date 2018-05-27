@@ -8,6 +8,6 @@ const getBiddingProjectById = require('./getBiddingProjectById');
 
 router.post('/createBiddingProject', createBiddingProject);
 router.put('/updateBiddingProject/:name', updateBiddingProject);
-router.get('/:companyId', getBiddingProjectById);
+router.get('/:projectId', getBiddingProjectById);
 
 module.exports = router;
