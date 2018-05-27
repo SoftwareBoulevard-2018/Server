@@ -9,6 +9,7 @@ const getUserById = require('./getUserById');
 const getUserByUsername = require('./getUserByUsername');
 const getUserByCompanyRole = require('./getUserByCompanyRole');
 const getUsersByRole = require('./getUsersByRole');
+const getUsersByCompany = require('./getUsersByCompany');
 
 router.get('/', getUsers);
 router.post('/', createUser);
@@ -17,5 +18,6 @@ router.get('/:userId', getUserById);
 router.get('/username/:username', getUserByUsername);
 router.post('/username', getUserByCompanyRole);
 router.post('/usersByRole', getUsersByRole);
+router.get('/company/:companyId', getUsersByCompany)
 
 module.exports = router;
