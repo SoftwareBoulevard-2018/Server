@@ -3,12 +3,11 @@ const { User } = require('../../models');
 module.exports = (req, res) => {
 
     const {
-        role,
-        companyId,
+        role1,
     } = req.body;
 
     User
-        .find({ role, companyId })
+        .find({ role: role1 })
         .then((users) => {
             if (!users) {
                 res

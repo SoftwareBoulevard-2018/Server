@@ -1,20 +1,20 @@
-const { User } = require('../../models');
+const { Record } = require('../../models');
 
 module.exports = (req, res) => {
 
     const {
-        role,
-        companyId,
+        finishDate,
+        company,
     } = req.body;
 
-    User
-        .find({ role, companyId })
+    Record
+        .findOne({ finishDate, company })
         .then((users) => {
             if (!users) {
                 res
                     .status(404)
                     .json({
-                        errors: ['USER_NOT_FOUND'],
+                        errors: ['RECORD_NOT_FOUND'],
                     });
                 return;
             }

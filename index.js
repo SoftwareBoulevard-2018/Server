@@ -8,6 +8,8 @@ const companyRoutes = require('./services/company');
 const puzzleRoutes = require('./services/puzzle');
 const loginRoutes = require('./services/login');
 const logoutRoutes = require('./services/logout');
+const reportsRoutes = require('./services/reports');
+const recordsRoutes = require('./services/record');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const BiddingProjectRoutes = require('./services/biddingProject');
@@ -21,6 +23,7 @@ const connection = require('./models/connection');
 app.use(express.json());
 app.use(cors());
 app.use(expressValidator());
+//session and validations aren't yet fully implemented
 app.use(session({
   secret: 'anything',
   resave: false,
@@ -60,6 +63,8 @@ app.use('/login', loginRoutes);
 app.use('/logout', logoutRoutes);
 app.use('/biddingProjects', BiddingProjectRoutes);
 app.use('/instantProjects', InstantProjectRoutes);
+app.use('/reports', reportsRoutes);
+app.use('/records', recordsRoutes);
 
 app.listen(3000, () => {
   console.log('Running on port 3000');

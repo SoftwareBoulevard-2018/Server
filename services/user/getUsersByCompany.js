@@ -2,13 +2,10 @@ const { User } = require('../../models');
 
 module.exports = (req, res) => {
 
-    const {
-        role,
-        companyId,
-    } = req.body;
+    const { companyId } = req.params;
 
     User
-        .find({ role, companyId })
+        .find({ companyId })
         .then((users) => {
             if (!users) {
                 res
