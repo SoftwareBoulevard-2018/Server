@@ -68,6 +68,7 @@ app.use('/instantProjects', InstantProjectRoutes);
 app.use('/reports', reportsRoutes);
 app.use('/records', recordsRoutes);
 app.use('/invitations', invitationsRoutes);
+app.use('/puzzleImages', express.static(__dirname + '/puzzleImages'));
 
 app.listen(3000, () => {
   console.log('Running on port 3000');
