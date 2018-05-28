@@ -6,23 +6,20 @@ const { Schema } = mongoose;
 
 // Check model to check whether or no this kind of schema works.
 const invitations = new Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  username:{
+
+  user:{
     type: String,
     unique: true,
-    required: true,
+
   },
-  companyId: {
+  company: {
     type: String,
     default: null,
     },
 
   state: {
     type: String,
-
+    default: 'unattended',
   },
 
 

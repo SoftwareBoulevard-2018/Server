@@ -6,7 +6,7 @@ module.exports = (req, res) => {
     // Check that receivers are allowed;
 
     const {
-        username,
+        user,
         company,
         state,
     } = req.body;
@@ -14,7 +14,7 @@ module.exports = (req, res) => {
 
     invitations
         .create({
-            username, company, state,
+            user, company, state,
         })
         .then(() => {
             res
