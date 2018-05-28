@@ -15,7 +15,6 @@ const MongoStore = require('connect-mongo')(session);
 const BiddingProjectRoutes = require('./services/biddingProject');
 const InstantProjectRoutes = require('./services/instantProject');
 const invitationsRoutes = require('./services/invitations');
-const estimationRoutes = require('./services/estimations');
 
 const app = express();
 
