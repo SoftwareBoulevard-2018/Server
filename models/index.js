@@ -6,6 +6,8 @@ const BiddingProject = require('./biddingProject');
 const InstantProject = require('./instantProject');
 const Record = require('./record');
 const Questions = require('./questions')
+const Assignment = require('./assignment')
+
 
 module.exports = {
   Email,
@@ -16,4 +18,5 @@ module.exports = {
   InstantProject,
   Record,
   Questions,
+  Assignment,
 };
