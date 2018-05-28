@@ -4,7 +4,6 @@ module.exports = (req, res) => {
 
 			const{
 				role,
-				question,
 				description,
 				answer1,
 				veracity1,
@@ -19,7 +18,7 @@ module.exports = (req, res) => {
 
 	Questions
 		  .create({
-			role, question, description, answer1, veracity1, answer2, veracity2, answer3, veracity3,answer4, veracity4
+			role, description, answer1, veracity1, answer2, veracity2, answer3, veracity3,answer4, veracity4
 		  })
 		  .then(() => {
 			 res
