@@ -19,6 +19,6 @@ module.exports = {
   InstantProject,
   Record,
   Questions,
-  Answer
-  Assignment,
+  Answer,
+  Assignment
 };
