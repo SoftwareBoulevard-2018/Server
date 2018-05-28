@@ -7,6 +7,7 @@ const InstantProject = require('./instantProject');
 const Record = require('./record');
 const invitations = require('./invitations');
 const Estimation = require('./estimation');
+const TrainingAttempt = require('./trainingAttempt');
 
 module.exports = {
   Email,
@@ -18,4 +19,5 @@ module.exports = {
   Record,
   invitations,
   Estimation,
+  TrainingAttempt,
 };

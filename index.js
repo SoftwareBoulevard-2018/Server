@@ -15,7 +15,8 @@ const MongoStore = require('connect-mongo')(session);
 const BiddingProjectRoutes = require('./services/biddingProject');
 const InstantProjectRoutes = require('./services/instantProject');
 const invitationsRoutes = require('./services/invitations');
-const estimationRoutes = require('./services/estimations');
+//const estimationRoutes = require('./services/estimations');
+const trainingAttemptRoutes = require('./services/trainingAttempt');
 
 const app = express();
 
@@ -68,6 +69,7 @@ app.use('/instantProjects', InstantProjectRoutes);
 app.use('/reports', reportsRoutes);
 app.use('/records', recordsRoutes);
 app.use('/invitations', invitationsRoutes);
+app.use('/trainingAttempts', trainingAttemptRoutes);
 
 app.listen(3000, () => {
   console.log('Running on port 3000');
