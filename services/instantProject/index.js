@@ -8,7 +8,7 @@ const getInstantProject = require('./getInstantProject');
 const getInstantProjectById = require('./getInstantProjectById');
 
 router.post('/createInstantProject', createInstantProject);
-router.put('/updateInstantProject/:name', updateInstantProject);
+router.put('/updateInstantProject/:id', updateInstantProject);
 router.get('/getInstantProject', getInstantProject);
 router.get('/:projectId', getInstantProjectById);
 

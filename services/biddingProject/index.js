@@ -8,7 +8,7 @@ const getBiddingProjectById = require('./getBiddingProjectById');
 const getBiddingProject = require('./getBiddingProject');
 
 router.post('/createBiddingProject', createBiddingProject);
-router.put('/updateBiddingProject/:name', updateBiddingProject);
+router.put('/updateBiddingProject/:id', updateBiddingProject);
 router.get('/getBiddingProject', getBiddingProject);
 router.get('/:projectId', getBiddingProjectById);
 

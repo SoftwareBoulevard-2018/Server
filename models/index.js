@@ -7,6 +7,8 @@ const InstantProject = require('./instantProject');
 const Record = require('./record');
 const Questions = require('./questions')
 const Answer = require('./answer')
+const Assignment = require('./assignment')
+
 
 module.exports = {
   Email,
@@ -18,4 +20,5 @@ module.exports = {
   Record,
   Questions,
   Answer
+  Assignment,
 };

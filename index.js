@@ -66,7 +66,6 @@ app.use('/biddingProjects', BiddingProjectRoutes);
 app.use('/instantProjects', InstantProjectRoutes);
 app.use('/reports', reportsRoutes);
 app.use('/records', recordsRoutes);
-app.use('/questions',questionRoutes);
 
 app.listen(3000, () => {
   console.log('Running on port 3000');

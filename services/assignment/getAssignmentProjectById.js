@@ -1,10 +1,10 @@
-const { BiddingProject } = require('../../models');
+const { Assignment } = require('../../models');
 
 module.exports = (req, res) => {
     const { projectId } = req.params;
     //const { id: userId } = req.user;
 
-    BiddingProject
+    Assignment
         .findById(projectId)
         .then((data) => {
             if (!data) {
@@ -36,4 +36,4 @@ module.exports = (req, res) => {
                     error: error.toString(),
                 });
         });
-}; 
+};
