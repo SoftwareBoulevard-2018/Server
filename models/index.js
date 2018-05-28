@@ -4,6 +4,7 @@ const Company = require('./company');
 const Puzzle = require('./puzzle');
 const BiddingProject = require('./biddingProject');
 const InstantProject = require('./instantProject');
+const TrainingAttempt = require('./trainingAttempt');
 
 module.exports = {
   Email,
@@ -12,4 +13,5 @@ module.exports = {
   Puzzle,
   BiddingProject,
   InstantProject,
+  TrainingAttempt,
 };

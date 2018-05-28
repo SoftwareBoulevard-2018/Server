@@ -12,6 +12,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const BiddingProjectRoutes = require('./services/biddingProject');
 const InstantProjectRoutes = require('./services/instantProject');
+const TrainingAttemptRoutes = require('./services/trainingAttempt');
 
 const app = express();
 
@@ -61,6 +62,7 @@ app.use('/login', loginRoutes);
 app.use('/logout', logoutRoutes);
 app.use('/biddingProjects', BiddingProjectRoutes);
 app.use('/instantProjects', InstantProjectRoutes);
+app.use('/trainingAttempt', TrainingAttemptRoutes);
 
 app.listen(3000, () => {
   console.log('Running on port 3000');
