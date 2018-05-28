@@ -5,6 +5,9 @@ const Puzzle = require('./puzzle');
 const BiddingProject = require('./biddingProject');
 const InstantProject = require('./instantProject');
 const Record = require('./record');
+const Questions = require('./questions')
+const Answer = require('./answer')
+const Assignment = require('./assignment')
 const invitations = require('./invitations');
 const Estimation = require('./estimation');
 
@@ -16,6 +19,9 @@ module.exports = {
   BiddingProject,
   InstantProject,
   Record,
+  Questions,
+  Answer,
+  Assignment,
   invitations,
   Estimation,
 };
