@@ -15,15 +15,7 @@ module.exports = (req, res) => {
                     });
                 return;
             }
-            /*if ((data.sender !== userId) || (!data.receiver.find(r => r === userId))) {
-              res
-                .status(401)
-                .json({
-                  errors: ['UNAUTHORIZED'],
-                });
-
-              return;
-            }*/
+           
             const project = data.toObject();
             res
                 .status(200)
