@@ -1,4 +1,4 @@
-const { Question } = require('../../models');
+const { Questions } = require('../../models');
 
 module.exports = (req, res) => {
 
@@ -17,7 +17,7 @@ module.exports = (req, res) => {
 			} = req.body;
 
 
-	Question
+	Questions
 		  .create({
 			role, question, description, answer1, veracity1, answer2, veracity2, answer3, veracity3,answer4, veracity4
 		  })
@@ -35,3 +35,4 @@ module.exports = (req, res) => {
 					result: error && error.message ? error.message : error.toString(),
 				});
 			});
+};
