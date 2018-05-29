@@ -17,6 +17,7 @@ const InstantProjectRoutes = require('./services/instantProject');
 const questionRoutes = require('./services/questions');
 const assignmentRoutes = require('./services/assignment');
 const invitationsRoutes = require('./services/invitations');
+const estimationRoutes = require('./services/estimations');
 
 const app = express();
 
@@ -72,6 +73,7 @@ app.use('/questions', questionRoutes);
 app.use('/assignments', assignmentRoutes);
 app.use('/invitations', invitationsRoutes);
 app.use('/puzzleImages', express.static(__dirname + '/puzzleImages'));
+app.use('/estimations', estimationRoutes);
 
 app.listen(3000, () => {
   console.log('Running on port 3000');
