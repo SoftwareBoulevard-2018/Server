@@ -4,13 +4,13 @@ module.exports = (req, res) => {
 
 	const Jimp = require("jimp");
 	
-	const pat = require('path');
+	const path = require('path');
 
-	const { rewarded_resources, path } = req.body;
+	const { rewarded_resources, imagen } = req.body;
 
-	const filename = pat.basename(path);
+	const filename = path.basename(imagen);
 
-	const ext = pat.extname(path);
+	const ext = path.extname(imagen);
 
 	const filename2 = filename.substr(0, filename.lastIndexOf('.'));
 	
@@ -18,10 +18,10 @@ module.exports = (req, res) => {
 	
 	var slicedImage = [];
 	
-	var originalImage = "puzzleImages/"+filename;
+	var originalImage = "http://35.196.111.251:3000/puzzleImages/"+filename;
 	
 	
-	Jimp.read(path).then(image => {
+	Jimp.read(imagen).then(image => {
 		const w = image.bitmap.width;
         const h = image.bitmap.height;
 		var sliceWidth = w / 4;
@@ -41,13 +41,14 @@ module.exports = (req, res) => {
 			else{
 				x = x+sliceWidth;
 			}
+			slice.resize(237,171);
 			slice.write("puzzleImages/"+filename2+"_"+i+ext);
 			
 		}
 	});
 	
 	for(var i=0; i<15; i++) {
-		slicedImage.push("puzzleImages/"+filename2+"_"+i+ext);
+		slicedImage.push("http://35.196.111.251:3000/puzzleImages/"+filename2+"_"+i+ext);
 	}
 	
 	Puzzle

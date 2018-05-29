@@ -4,60 +4,28 @@ const connection = require('./connection');
 
 const { Schema } = mongoose;
 
+const Answer = new Schema({
+	description: {
+	 type: String,
+     required: true
+    },
+	veracity: {
+	 type: Boolean,
+	 required: true
+	}
+});
+
 const Questions = new Schema({
 	role: {
 	 type: String,
-	 required: true,
+  	required: true
     },
-	description: {
-	 type: String,
-	 required: true,
+	description:{
+		type: String,
+	  required: true
 	},
-	answers: {[
-		answer1:{
-			description:{
-				type: String,
-				required: true
-			}
-			veracity1:{
-				type: Boolean,
-				required: true
-			}
-		}
-
-		answer2:{
-			description:{
-				type: String,
-				required: true
-			}
-			veracity2:{
-				type: Boolean,
-				required: true
-			}
-		}
-		answer3:{
-			description:{
-				type: String,
-				required: true
-			}
-			veracity3:{
-				type: Boolean,
-				required: true
-			}
-		}
-
-		answer4:{
-			description:{
-				type: String,
-				required: true
-			}
-			veracity4:{
-				type: Boolean,
-				required: true
-			}
-		}
-
-	}]
+	answers:{
+		type:[Answer],
 		required: true
 	}
 

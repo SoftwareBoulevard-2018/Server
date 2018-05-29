@@ -1,10 +1,10 @@
-const { BiddingProject } = require('../../models');
+const { InstantProject } = require('../../models');
 
 module.exports = (req, res) => {
     const { projectId } = req.params;
     //const { id: userId } = req.user;
 
-    BiddingProject
+    InstantProject
         .findById(projectId)
         .then((data) => {
             if (!data) {
@@ -15,7 +15,15 @@ module.exports = (req, res) => {
                     });
                 return;
             }
-           
+            /*if ((data.sender !== userId) || (!data.receiver.find(r => r === userId))) {
+              res
+                .status(401)
+                .json({
+                  errors: ['UNAUTHORIZED'],
+                });
+
+              return;
+            }*/
             const project = data.toObject();
             res
                 .status(200)
@@ -28,4 +36,4 @@ module.exports = (req, res) => {
                     error: error.toString(),
                 });
         });
-}; 
+};

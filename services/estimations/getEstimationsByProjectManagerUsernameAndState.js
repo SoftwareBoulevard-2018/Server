@@ -1,25 +1,26 @@
-const { BiddingProject } = require('../../models');
+const { Estimation } = require('../../models');
 
 module.exports = (req, res) => {
-    const { projectId } = req.params;
-    //const { id: userId } = req.user;
 
-    BiddingProject
-        .findById(projectId)
-        .then((data) => {
-            if (!data) {
+    const {
+        projectManagerUsername,
+        state,
+    } = req.body;
+
+    Estimation
+        .find({ projectManagerUsername, state })
+        .then((users) => {
+            if (!users) {
                 res
                     .status(404)
                     .json({
-                        errors: ['PROJECT_NOT_FOUND'],
+                        errors: ['ESTIMATION_NOT_FOUND'],
                     });
                 return;
             }
-           
-            const project = data.toObject();
             res
                 .status(200)
-                .json(project);
+                .json(users);
         })
         .catch((error) => {
             res
@@ -28,4 +29,4 @@ module.exports = (req, res) => {
                     error: error.toString(),
                 });
         });
-}; 
+};

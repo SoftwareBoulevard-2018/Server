@@ -1,20 +1,20 @@
-const { Questions } = require('../../models');
+const { Assignment} = require("../../models"); 
 
 module.exports = (req, res) => {
   const { id } = req.params;
-  const{
-    role,
-    description,
-    answers = [{ description, veracity }, { description, veracity }, { description, veracity }, { description, veracity }]
-  } = req.body;
-  Questions
+  // const { id: sender } = req.user;
+
+  // TODO check whether client information is sanitize;
+  // Check that receivers are allowed;
+
+  Assignment
     .findByIdAndUpdate(id, req.body)
     .then((data) => {
       if (!data) {
         res
           .status(404)
           .json({
-            errors: ['QUESTION_NOT_FOUND'],
+            errors: ['Assignment_NOT_FOUND'],
           });
         return;
       }
