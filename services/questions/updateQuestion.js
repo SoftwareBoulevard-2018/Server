@@ -1,10 +1,14 @@
-const { Question } = require('../../models');
+const { Questions } = require('../../models');
 
 module.exports = (req, res) => {
-  const { questionId } = req.params;
-
-  Question
-    .findByIdAndUpdate(questionId, req.body)
+  const { id } = req.params;
+  const{
+    role,
+    description,
+    answers = [{ description, veracity }, { description, veracity }, { description, veracity }, { description, veracity }]
+  } = req.body;
+  Questions
+    .findByIdAndUpdate(id, req.body)
     .then((data) => {
       if (!data) {
         res

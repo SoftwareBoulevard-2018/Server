@@ -1,22 +1,30 @@
-const { BiddingProject } = require('../../models');
+const { Puzzle } = require('../../models');
 
 module.exports = (req, res) => {
-    const { projectId } = req.params;
+    const { id } = req.params;
     //const { id: userId } = req.user;
 
-    BiddingProject
-        .findById(projectId)
+    Puzzle
+        .findById(id)
         .then((data) => {
             if (!data) {
                 res
                     .status(404)
                     .json({
-                        errors: ['PROJECT_NOT_FOUND'],
+                        errors: ['PUZZLE_NOT_FOUND'],
                     });
                 return;
             }
-           
-            const project = data.toObject();
+            /*if ((data.sender !== userId) || (!data.receiver.find(r => r === userId))) {
+              res
+                .status(401)
+                .json({
+                  errors: ['UNAUTHORIZED'],
+                });
+
+              return;
+            }*/
+            const puzzle = data.toObject();
             res
                 .status(200)
                 .json(project);
@@ -28,4 +36,4 @@ module.exports = (req, res) => {
                     error: error.toString(),
                 });
         });
-}; 
+};
