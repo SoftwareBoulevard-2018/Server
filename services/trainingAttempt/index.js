@@ -4,6 +4,6 @@ const router = express.Router();
 
 const getTrainingAttempts = require('./getTrainingAttempts');
 
-router.get('/', getTrainingAttempts);
+router.post('/', getTrainingAttempts);
 
 module.exports = router;
