@@ -17,6 +17,7 @@ const InstantProjectRoutes = require('./services/instantProject');
 const invitationsRoutes = require('./services/invitations');
 //const estimationRoutes = require('./services/estimations');
 const trainingAttemptRoutes = require('./services/trainingAttempt');
+const developingAttemptRoutes = require('./services/developingAttempt');
 
 const app = express();
 
@@ -70,6 +71,7 @@ app.use('/reports', reportsRoutes);
 app.use('/records', recordsRoutes);
 app.use('/invitations', invitationsRoutes);
 app.use('/trainingAttempts', trainingAttemptRoutes);
+app.use('/developingAttempts', developingAttemptRoutes);
 
 app.listen(3000, () => {
   console.log('Running on port 3000');

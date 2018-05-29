@@ -8,6 +8,7 @@ const Record = require('./record');
 const invitations = require('./invitations');
 const Estimation = require('./estimation');
 const TrainingAttempt = require('./trainingAttempt');
+const DevelopingAttempt = require('./developingAttempt');
 
 module.exports = {
   Email,
@@ -20,4 +21,5 @@ module.exports = {
   invitations,
   Estimation,
   TrainingAttempt,
+  DevelopingAttempt,
 };
