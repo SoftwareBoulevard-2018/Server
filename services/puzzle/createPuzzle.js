@@ -41,6 +41,7 @@ module.exports = (req, res) => {
 			else{
 				x = x+sliceWidth;
 			}
+			slice.resize(237,171);
 			slice.write("puzzleImages/"+filename2+"_"+i+ext);
 			
 		}
