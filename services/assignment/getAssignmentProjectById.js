@@ -1,17 +1,17 @@
-const { Assignment } = require('../../models');
+/*const { Assignment } = require('../../models');
 
 module.exports = (req, res) => {
     const { projectId } = req.params;
     //const { id: userId } = req.user;
 
     Assignment
-        .findById(projectId)
+        .find({projectId: projectId})
         .then((data) => {
             if (!data) {
                 res
                     .status(404)
                     .json({
-                        errors: ['PROJECT_NOT_FOUND'],
+                        errors: ['ASSIGNMENT(putoel que lo lea)_NOT_FOUND'],
                     });
                 return;
             }
@@ -24,6 +24,7 @@ module.exports = (req, res) => {
 
               return;
             }*/
+            /*
             const project = data.toObject();
             res
                 .status(200)
@@ -36,4 +37,20 @@ module.exports = (req, res) => {
                     error: error.toString(),
                 });
         });
+};*/
+const { Assignment } = require('../../models');
+
+module.exports = (req, res) => {
+    //const { id: receiver } = req.user;
+    const { projectId } = req.params;
+    Assignment
+        .find({projectId: projectId})
+        .then(result => res
+            .status(200)
+            .json({
+                data: result.map(o => o.toObject()),
+            }))
+        .catch(error => res
+            .status(500)
+            .json({ errors: [error.message.toUpperCase()] }));
 };
