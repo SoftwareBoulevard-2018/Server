@@ -18,6 +18,8 @@ const questionRoutes = require('./services/questions');
 const assignmentRoutes = require('./services/assignment');
 const invitationsRoutes = require('./services/invitations');
 const estimationRoutes = require('./services/estimations');
+const trainingAttemptRoutes = require('./services/trainingAttempt');
+const developingAttemptRoutes = require('./services/developingAttempt');
 
 const app = express();
 
@@ -72,6 +74,8 @@ app.use('/records', recordsRoutes);
 app.use('/questions', questionRoutes);
 app.use('/assignments', assignmentRoutes);
 app.use('/invitations', invitationsRoutes);
+app.use('/trainingAttempts', trainingAttemptRoutes);
+app.use('/developingAttempts', developingAttemptRoutes);
 app.use('/puzzleImages', express.static(__dirname + '/puzzleImages'));
 app.use('/estimations', estimationRoutes);
 

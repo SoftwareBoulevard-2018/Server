@@ -10,6 +10,8 @@ const Answer = require('./questions')
 const Assignment = require('./assignment')
 const invitations = require('./invitations');
 const Estimation = require('./estimation');
+const TrainingAttempt = require('./trainingAttempt');
+const DevelopingAttempt = require('./developingAttempt');
 
 module.exports = {
   Email,
@@ -24,4 +26,6 @@ module.exports = {
   Assignment,
   invitations,
   Estimation,
+  TrainingAttempt,
+  DevelopingAttempt,
 };

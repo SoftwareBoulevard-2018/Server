@@ -3,3 +3,5 @@ package-lock.json
 
 *.test.*
 .idea/workspace.xml
+services/.DS_Store
+.DS_Store
