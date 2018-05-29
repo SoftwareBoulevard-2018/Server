@@ -4,6 +4,17 @@ const connection = require('./connection');
 
 const { Schema } = mongoose;
 
+const Answer = new Schema({
+	description: {
+	 type: String,
+     required: true
+    },
+	veracity: {
+	 type: Boolean,
+	 required: true
+	}
+});
+
 const Questions = new Schema({
 	role: {
 	 type: String,
@@ -12,9 +23,9 @@ const Questions = new Schema({
 	description:{
 		type: String,
 	  required: true
-	   },
+	},
 	answers:{
-		type:[(String, Boolean)],
+		type:[Answer],
 		required: true
 	}
 
