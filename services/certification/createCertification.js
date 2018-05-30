@@ -2,13 +2,11 @@ const {Certification} = require('../../models');
 
 module.exports = (req, res) => {
 	const{
-		questions,
-		role,
-		level
+	level, role, questions
 	} = req.body;
 	Certification
 	.create({
-		role, level, quiestions
+		role, level, questions
 	})
 	.then((data) => {
       res
@@ -16,6 +14,7 @@ module.exports = (req, res) => {
         .json({
           data: data.toObject(),
         });
+
     })
     .catch((error) => {
       res
