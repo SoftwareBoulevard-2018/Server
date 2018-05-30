@@ -7,6 +7,6 @@ const getprojectsById = require('./getprojectsById');
 
 
 router.get('/', getprojects);
-router.get('/', getprojectsById);
+router.post('/getprojectsById', getprojectsById);
 
 module.exports = router;

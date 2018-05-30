@@ -8,7 +8,7 @@ module.exports = (req, res) => {
     } = req.body;
 
     invitations
-        .findOne({ user, state })
+        .find({ user, state })
         .then((invitation) => {
             if (!invitation) {
                 res
