@@ -21,7 +21,7 @@ const chooseprojectRoutes = require('./services/chooseproject');
 const estimationRoutes = require('./services/estimations');
 const trainingAttemptRoutes = require('./services/trainingAttempt');
 const developingAttemptRoutes = require('./services/developingAttempt');
-
+const certificationRoutes = require('./services/certification');
 const app = express();
 
 const connection = require('./models/connection');
@@ -31,12 +31,12 @@ app.use(express.json());
 app.use(cors());
 app.use(expressValidator());
 //session and validations aren't yet fully implemented
-app.use(session({
+/*app.use(session({
   secret: 'anything',
   resave: false,
   saveUninitialized: true,
   store: new MongoStore({ mongooseConnection: connection }),
-}));
+}));*/
 
 // Mocking user data;
 app.use((req, res, next) => {
@@ -79,7 +79,9 @@ app.use('/chooseproject', chooseprojectRoutes);
 app.use('/trainingAttempts', trainingAttemptRoutes);
 app.use('/developingAttempts', developingAttemptRoutes);
 app.use('/puzzleImages', express.static(__dirname + '/puzzleImages'));
+app.use('/static/company_img', express.static(__dirname + '/static/company_img'));
 app.use('/estimations', estimationRoutes);
+app.use('/certification', certificationRoutes);
 
 app.listen(3000, () => {
   console.log('Running on port 3000');
