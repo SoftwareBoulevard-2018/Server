@@ -12,7 +12,7 @@ const invitations = require('./invitations');
 const Estimation = require('./estimation');
 const TrainingAttempt = require('./trainingAttempt');
 const DevelopingAttempt = require('./developingAttempt');
-
+const Certification = require('./certifications');
 module.exports = {
   Email,
   User,
@@ -28,4 +28,5 @@ module.exports = {
   Estimation,
   TrainingAttempt,
   DevelopingAttempt,
+  Certification,
 };

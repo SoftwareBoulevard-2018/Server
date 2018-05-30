@@ -21,7 +21,7 @@ const chooseprojectRoutes = require('./services/chooseproject');
 const estimationRoutes = require('./services/estimations');
 const trainingAttemptRoutes = require('./services/trainingAttempt');
 const developingAttemptRoutes = require('./services/developingAttempt');
-
+const certificationRoutes = require('./services/certification');
 const app = express();
 
 const connection = require('./models/connection');
@@ -80,6 +80,7 @@ app.use('/trainingAttempts', trainingAttemptRoutes);
 app.use('/developingAttempts', developingAttemptRoutes);
 app.use('/puzzleImages', express.static(__dirname + '/puzzleImages'));
 app.use('/estimations', estimationRoutes);
+app.use('/certification', certificationRoutes);
 
 app.listen(3000, () => {
   console.log('Running on port 3000');
