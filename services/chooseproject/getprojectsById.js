@@ -1,4 +1,4 @@
-const { invitations } = require('../../models');
+const { chooseproject } = require('../../models');
 
 module.exports = (req, res) => {
 
@@ -6,20 +6,20 @@ module.exports = (req, res) => {
         id
     } = req.body;
 
-    invitations
+    chooseproject
         .findOne({ id })
-        .then((invitation) => {
-            if (!invitation) {
+        .then((project) => {
+            if (!project) {
                 res
                     .status(404)
                     .json({
-                        errors: ['INVITATION_NOT_FOUND'],
+                        errors: ['PROJECT_NOT_FOUND'],
                     });
                 return;
             }
             res
                 .status(200)
-                .json(invitation);
+                .json(project);
         })
         .catch((error) => {
             res
