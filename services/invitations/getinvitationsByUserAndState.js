@@ -3,17 +3,18 @@ const { invitations } = require('../../models');
 module.exports = (req, res) => {
 
     const {
-        id
+        user,
+        state,
     } = req.body;
 
     invitations
-        .findOne({ id })
+        .findOne({ user, state })
         .then((invitation) => {
             if (!invitation) {
                 res
                     .status(404)
                     .json({
-                        errors: ['INVITATION_NOT_FOUND'],
+                            errors: ['INVITATION_NOT_FOUND'],
                     });
                 return;
             }
