@@ -12,7 +12,7 @@ const getinvitationsByUserAndState = require('./getinvitationsByUserAndState');
 router.get('/', getinvitations);
 router.post('/', createinvitations);
 router.post('/getCurrentInvitationID', getinvitationById);
-router.put('/', updateinvitations);
+router.put('/:invitationsId', updateinvitations);
 router.post('/getCurrentInvitation', getinvitationsByUserAndState);
 
 

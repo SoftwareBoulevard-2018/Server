@@ -47,9 +47,9 @@ module.exports = (req, res) => {
         .find({projectId: projectId})
         .then(result => res
             .status(200)
-            .json({
-                data: result.map(o => o.toObject()),
-            }))
+            .json(
+                result.map(o => o.toObject()),
+            ))
         .catch(error => res
             .status(500)
             .json({ errors: [error.message.toUpperCase()] }));

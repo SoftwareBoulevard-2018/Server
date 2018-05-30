@@ -27,7 +27,7 @@ module.exports = (req, res) => {
             const question = data.toObject();
             res
                 .status(200)
-                .json(project);
+                .json(question);
         })
         .catch((error) => {
             res
