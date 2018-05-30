@@ -12,6 +12,7 @@ module.exports = (req, res) => {
       if (!data) {
         res
           .status(404)
+
           .json({
             errors: ['INVITATION_NOT_FOUND, CANT_MAKE_THE_UPDATE', invitationsId, req.body],
           });
