@@ -9,16 +9,16 @@ const invitations = new Schema({
 
   user:{
     type: String,
-    unique: true,
-
+    required: true,
   },
   company: {
     type: String,
-    default: null,
+    required: true,
     },
 
   state: {
     type: String,
+    required: true,
     default: 'unattended',
   },
 
