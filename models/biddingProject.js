@@ -10,13 +10,13 @@ const BiddingProject = new Schema({
     type: String,
     required: true,
   },
-  amount_analyst_question: {
+  numberOfDevelopingQuestionsPerAnalyst: {
     type: Number,
   },
-  amount_developer_question: {
+  numberOfDevelopingQuestionsPerDeveloper: {
     type: Number,
   },
-  amount_tester_question: {
+  numberOfDevelopingQuestionsPerTester: {
     type: Number,
   },
   required_K: {
