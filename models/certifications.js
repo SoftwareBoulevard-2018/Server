@@ -11,7 +11,7 @@ const Certification = new Schema({
 	},
 	level:
 	{
-		type: String,
+		type: Number,
 		required: true
 	},
 	questions:
