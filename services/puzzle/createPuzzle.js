@@ -16,14 +16,14 @@ module.exports = (req, res) => {
 	
 	var slicedImage = [];
 	
-	var originalImage = "http://35.196.111.251:3000/puzzleImages/"+filename;
+	var originalImage = "puzzleImages/"+filename;
 	
 	let base64Image = imagen.split(';base64,').pop();
 	
-	fs.writeFile('puzzleImages/'+filename, base64Image, {encoding: 'base64'}, function(err) {
+	fs.writeFileSync("puzzleImages/"+filename, base64Image, {encoding: 'base64'}, function(err) {
 	});
 	
-	Jimp.read('puzzleImages/'+filename).then(image => {
+	Jimp.read("puzzleImages/"+filename).then(image => {
 		const w = image.bitmap.width;
         const h = image.bitmap.height;
 		var sliceWidth = w / 4;
@@ -33,7 +33,6 @@ module.exports = (req, res) => {
 		sliceWidth=sliceWidth;
 		sliceHeight=sliceHeight;
 		const original = image.clone();
-		original.write("puzzleImages/"+filename);
 		for(var i=0; i<15; i++) {
 			var slice = image.clone().crop(x,y,sliceWidth,sliceHeight);
 			if((x+sliceWidth) >= w){
