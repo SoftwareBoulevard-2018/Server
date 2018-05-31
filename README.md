@@ -124,6 +124,21 @@ Method: POST, URL: /send/, FUNCTION: receives a body with data of a just wrote e
 
 Method: GET, URL: /sent:id, FUNCTION: returns a JSON with all the sent emails by the user with that id
 
+### Module 4 - "Play team role" models:
+TrainingAttempt.
+DevelopingAttempt.
+### Module 4 - "Play team role" services:
+TrainingAttempt.
+
+Method: POST, URL: /trainingAttempt/create', FUNCTION: Creates a new training attempt in the database.
+
+Method: POST, URL: /trainingAttempt/', FUNCTION: Gets all the training attempts based in the state.
+DevelopingAttempt.
+
+Method: POST, URL: /developingAttempt/create', FUNCTION: Creates a new developing attempt in the database.
+
+Method: POST, URL: /developingAttempt/', FUNCTION: Gets all the developing attempts based in the state.
+
 ### Module 3 - "Manage Team" models:
 
 #### Invitations.
