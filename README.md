@@ -65,6 +65,10 @@ Method: PUT, URL: companies/:companyId, FUNCTION: receives a body with data of a
 ### Module 5 - Communication
 
 Method: GET, URL: /read/:id, FUNCTION: returns a JSON with all the received emails by the user with that id
+
 Method: PUT, URL: /updateState/:idEmail, FUNCTION: updates the Email with that id
+
 Method: POST, URL: /send/, FUNCTION: receives a body with data of a just wrote email, and creates it on database
+
 Method: GET, URL: /sent:id, FUNCTION: returns a JSON with all the sent emails by the user with that id
+
