@@ -32,11 +32,25 @@ All folders use their index.js files at first and then redirect the actions depe
 
 ### Login:
 
-POSTURL: /login ->
+Method: POST, URL: /login, FUNCTION: receives a body with username and password and returns if it's a registered user.
 
 ### Users:
 
+Method: GET, URL: /users, FUNCTION: returns a JSON with all the users registered.
 
+Method: POST, URL: /users, FUNCTION: receives a body with data of a user and creates it on the database.
+
+Method: GET, URL: users/:userId, FUNCTION: returns a JSON with the user with that id.
+
+Method: PUT, URL: users/:userId, FUNCTION: receives a body with data of a user and updates the data of the user with the id on the URL.
+
+Method: GET, URL: users/username/:username, FUNCTION: returns a JSON with the user with that username.
+
+Method: POST, URL: users/username, FUNCTION: receives a body with a companyId and a role and returns all users with that role and that companyId.
+
+Method: POST, URL: users/usersByRole, FUNCTION: receives a body with a role and returns all users with that role.
+
+Method: GET, URL:users/company/:companyId, FUNCTION: returns a list of the users affiliated to the company with that companyId.
 
 ### Companies
 
