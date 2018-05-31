@@ -12,29 +12,29 @@ npm start
 
 Now the app is running on your localhost:3000 and you can open it from your browser and interact with it using http requests.
 
-## Folder - Files structure:
+### Folder - Files structure:
 
 /models/ -> Here are located the models/scemas used for the database creation.
 
 /services/ -> Here are located all the http services which are exposed for the front-end to use.
 
-## Folder structure:
+### Folder structure:
 
 All folders use their index.js files at first and then redirect the actions depending on the URL of the http request reaching.
 
-## Module 2 - "Game Management" models:
+### Module 2 - "Game Management" models:
 
-### User.
+#### User.
 
-### Company.
+#### Company.
 
-## Module 2 - "Game Management" services:
+### Module 2 - "Game Management" services:
 
-### Login:
+#### Login:
 
 Method: POST, URL: /login, FUNCTION: receives a body with username and password and returns if it's a registered user.
 
-### Users:
+#### Users:
 
 Method: GET, URL: /users, FUNCTION: returns a JSON with all the users registered.
 
@@ -52,5 +52,10 @@ Method: POST, URL: users/usersByRole, FUNCTION: receives a body with a role and 
 
 Method: GET, URL:users/company/:companyId, FUNCTION: returns a list of the users affiliated to the company with that companyId.
 
-### Companies
+#### Companies
 
+router.get('/', getCompanies);
+router.post('/', createCompany);
+router.put('/:companyId', updateCompany);
+router.get('/:companyId', getCompanyById);
+router.use('/image', uploadImage);
