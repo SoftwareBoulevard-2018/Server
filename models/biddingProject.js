@@ -20,7 +20,7 @@ const BiddingProject = new Schema({
     type: Number,
   },
   required_K: {
-    type: Number,
+    type: Number, 
   },
   rewarded_K: {
     type: Number,

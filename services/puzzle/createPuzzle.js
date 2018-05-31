@@ -5,23 +5,25 @@ module.exports = (req, res) => {
 	const Jimp = require("jimp");
 	
 	const path = require('path');
-
-	const { rewarded_resources, imagen } = req.body;
-
-	const filename = path.basename(imagen);
-
-	const ext = path.extname(imagen);
-
-	const filename2 = filename.substr(0, filename.lastIndexOf('.'));
 	
 	const fs = require('fs');
+
+	const { rewarded_resources, imagen, filename } = req.body;
+
+	const ext = path.extname(filename);
+
+	const filename2 = filename.substr(0, filename.lastIndexOf('.'));
 	
 	var slicedImage = [];
 	
 	var originalImage = "http://35.196.111.251:3000/puzzleImages/"+filename;
 	
+	let base64Image = imagen.split(';base64,').pop();
 	
-	Jimp.read(imagen).then(image => {
+	fs.writeFile('puzzleImages/'+filename, base64Image, {encoding: 'base64'}, function(err) {
+	});
+	
+	Jimp.read('puzzleImages/'+filename).then(image => {
 		const w = image.bitmap.width;
         const h = image.bitmap.height;
 		var sliceWidth = w / 4;
