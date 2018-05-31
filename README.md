@@ -54,8 +54,10 @@ Method: GET, URL:users/company/:companyId, FUNCTION: returns a list of the users
 
 #### Companies
 
-router.get('/', getCompanies);
-router.post('/', createCompany);
-router.put('/:companyId', updateCompany);
-router.get('/:companyId', getCompanyById);
-router.use('/image', uploadImage);
+Method: GET, URL: /companies, FUNCTION: returns a JSON with all the companies registered.
+
+Method: POST, URL: /companies, FUNCTION: receives a body with data of a company and creates it on the database.
+
+Method: GET, URL: companies/:companyId, FUNCTION: returns a JSON with the company with that id.
+
+Method: PUT, URL: companies/:companyId, FUNCTION: receives a body with data of a company and updates the data of the company with the id on the URL.
