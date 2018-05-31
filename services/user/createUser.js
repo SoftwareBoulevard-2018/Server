@@ -5,6 +5,18 @@ module.exports = (req, res) => {
   // TODO check whether client information is sanitize;
   // Check that receivers are allowed;
 
+  /**
+   * function to validate if the user has permissions
+   * TODO activate when frontend sends sessions
+   */
+  /*if(!req.session.user || req.session.user.role != 'Game Administrator'){
+    res.status(401).json({
+      errors: req.session,
+      ses: req.session.user
+    });
+    return
+  }*/
+
   const {
     name,
     username,

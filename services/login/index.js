@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
           });
         return;
       }
-      req.session.user = user;
+      //req.session.user = user;
       res
         .status(200)
         .json(user.toObject());
@@ -33,7 +33,7 @@ router.post('/', (req, res) => {
         });
     });
 });
-
+/*
 router.get('/', (req, res) => {
   if (!req.session.user) {
     res
@@ -46,6 +46,6 @@ router.get('/', (req, res) => {
   res
     .status(200)
     .json(req.session.user);
-});
+});*/
 
 module.exports = router;
