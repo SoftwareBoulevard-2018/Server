@@ -21,6 +21,58 @@ Now the app is running on your localhost:3000 and you can open it from your brow
 ### Folder structure:
 
 All folders use their index.js files at first and then redirect the actions depending on the URL of the http request reaching.
+### Module 1 - "Game setup" services:
+
+### Bidding Project
+Method: GET, URL: /biddingProjects, FUNCTION: returns a JSON with all the projects registered.
+
+Method: POST, URL: /biddingProjects/updateBiddingProject/:id FUNCTION: receives a body receives a body with data of a bbidding roject and actualize by ID.
+
+Method: POST, URL: /biddingProjects/createBiddingProject, FUNCTION: receives a body with data of a bbidding roject and creates it on the database
+
+Method: GET, URL: /biddingprojects/:projectId' FUNCTION: returns a JSON with the bidding project if exist in the database.
+
+### Instant Project
+Method: GET, URL: /instantProjects, FUNCTION: returns a JSON with all the projects registered.
+
+Method: POST, URL: /instantProjects/updateinstantProject/:id FUNCTION: receives a body receives a body with data of a instant roject and actualize by ID.
+
+Method: POST, URL: /instantProjects/createIntantProject, FUNCTION: receives a body with data of a instant project and creates it on the database
+
+Method: GET, URL: /instantprojects/:projectId' FUNCTION: returns a JSON with the instant project if exist in the database.
+
+### Questions
+
+Method: GET, URL: /questions, FUNCTION: returns a JSON with all the questions registered.
+
+Method: POST, URL: /questions/updateQuestion/:id FUNCTION: eceives a body with data of a question question and actualize by ID.
+
+Method: POST, URL: /questions/createQuestion', FUNCTION: receives a body with data of a question and creates it on the database
+
+Method: GET, URL: /questions//getQuestionById/:id' FUNCTION: returns a JSON with the iquestion if exist in the database.
+
+### Puzzle
+Method: POST, URL: /puzzles/createPuzzle', FUNCTION: receives a body with data of a puzzle and creates it on the database
+
+Method: GET, URL: /puzzles/getPuzzleById/:id' FUNCTION: returns a JSON with the puzzle if exist in the database.
+
+Method: GET, URL: /puzzles/, FUNCTION: returns a JSON with all the puzzles stored.
+
+### Assignment
+Method: POST, URL: /assignments/createPuzzle', FUNCTION: receives a body with data of an assignment and creates it on the database
+
+Method: PUT, URL: assignments/updateAssignment/:id, FUNCTION: receives a body with data of a assignment and updates the data of the assignment with the id on the URL.
+
+Method: GET, URL: /assignmentss/getAssignment' FUNCTION: returns a JSON with the assignments
+
+Method: GET, URL: /assignments/:projectId' FUNCTION: returns a JSON with the assignment if exist in the database.
+
+### Certifications
+Method: GET, URL: /certifications/getCertification/' FUNCTION: returns a JSON with the certifications
+
+Method: PUT, URL: /certifications/updateCertification/:id', FUNCTION: receives a body with data of a certification and updates the data of the certifications with the id on the URL.
+
+Method: POST, URL: /certifications/createCertification/', FUNCTION: receives a body with data of a certification and creates it on the database
 
 ### Module 2 - "Game Management" models:
 
@@ -61,6 +113,16 @@ Method: POST, URL: /companies, FUNCTION: receives a body with data of a company 
 Method: GET, URL: companies/:companyId, FUNCTION: returns a JSON with the company with that id.
 
 Method: PUT, URL: companies/:companyId, FUNCTION: receives a body with data of a company and updates the data of the company with the id on the URL.
+
+### Module 5 - Communication
+
+Method: GET, URL: /read/:id, FUNCTION: returns a JSON with all the received emails by the user with that id
+
+Method: PUT, URL: /updateState/:idEmail, FUNCTION: updates the Email with that id
+
+Method: POST, URL: /send/, FUNCTION: receives a body with data of a just wrote email, and creates it on database
+
+Method: GET, URL: /sent:id, FUNCTION: returns a JSON with all the sent emails by the user with that id
 
 ### Module 3 - "Manage Team" models:
 
@@ -103,34 +165,3 @@ Method: POST, URL: /estimations/getEstimationsByProjectManagerUsernameAndState',
 Method: POST, URL: /estimations/getEstimationByPMAndProject', FUNCTION: receives a username and project and returns estimation.
 
 Method: POST, URL: /estimations', FUNCTION: receives a body with data of a estimate and creates it on the database.
-
-
-### Module 4 - "Play team role" models:
-
-#### TrainingAttempt.
-
-#### DevelopingAttempt.
-
-### Module 4 - "Play team role" services:
-
-#### TrainingAttempt.
-
-Method: POST, URL: /trainingAttempt/create', FUNCTION: Creates a new training attempt in the database.
-
-Method: POST, URL: /trainingAttempt/', FUNCTION: Gets all the training attempts based in the state.
-
-#### DevelopingAttempt.
-
-Method: POST, URL: /developingAttempt/create', FUNCTION: Creates a new developing attempt in the database.
-
-Method: POST, URL: /developingAttempt/', FUNCTION: Gets all the developing attempts based in the state.
-
-### Module 5 - Communication
-
-Method: GET, URL: /read/:id, FUNCTION: returns a JSON with all the received emails by the user with that id
-
-Method: PUT, URL: /updateState/:idEmail, FUNCTION: updates the Email with that id
-
-Method: POST, URL: /send/, FUNCTION: receives a body with data of a just wrote email, and creates it on database
-
-Method: GET, URL: /sent:id, FUNCTION: returns a JSON with all the sent emails by the user with that id
