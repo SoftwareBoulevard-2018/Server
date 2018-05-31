@@ -114,31 +114,6 @@ Method: GET, URL: companies/:companyId, FUNCTION: returns a JSON with the compan
 
 Method: PUT, URL: companies/:companyId, FUNCTION: receives a body with data of a company and updates the data of the company with the id on the URL.
 
-### Module 5 - Communication
-
-Method: GET, URL: /read/:id, FUNCTION: returns a JSON with all the received emails by the user with that id
-
-Method: PUT, URL: /updateState/:idEmail, FUNCTION: updates the Email with that id
-
-Method: POST, URL: /send/, FUNCTION: receives a body with data of a just wrote email, and creates it on database
-
-Method: GET, URL: /sent:id, FUNCTION: returns a JSON with all the sent emails by the user with that id
-
-### Module 4 - "Play team role" models:
-TrainingAttempt.
-DevelopingAttempt.
-### Module 4 - "Play team role" services:
-TrainingAttempt.
-
-Method: POST, URL: /trainingAttempt/create', FUNCTION: Creates a new training attempt in the database.
-
-Method: POST, URL: /trainingAttempt/', FUNCTION: Gets all the training attempts based in the state.
-DevelopingAttempt.
-
-Method: POST, URL: /developingAttempt/create', FUNCTION: Creates a new developing attempt in the database.
-
-Method: POST, URL: /developingAttempt/', FUNCTION: Gets all the developing attempts based in the state.
-
 ### Module 3 - "Manage Team" models:
 
 #### Invitations.
@@ -180,3 +155,28 @@ Method: POST, URL: /estimations/getEstimationsByProjectManagerUsernameAndState',
 Method: POST, URL: /estimations/getEstimationByPMAndProject', FUNCTION: receives a username and project and returns estimation.
 
 Method: POST, URL: /estimations', FUNCTION: receives a body with data of a estimate and creates it on the database.
+
+### Module 4 - "Play team role" models:
+TrainingAttempt.
+DevelopingAttempt.
+### Module 4 - "Play team role" services:
+TrainingAttempt.
+
+Method: POST, URL: /trainingAttempt/create', FUNCTION: Creates a new training attempt in the database.
+
+Method: POST, URL: /trainingAttempt/', FUNCTION: Gets all the training attempts based in the state.
+DevelopingAttempt.
+
+Method: POST, URL: /developingAttempt/create', FUNCTION: Creates a new developing attempt in the database.
+
+Method: POST, URL: /developingAttempt/', FUNCTION: Gets all the developing attempts based in the state.
+
+### Module 5 - Communication
+
+Method: GET, URL: /read/:id, FUNCTION: returns a JSON with all the received emails by the user with that id
+
+Method: PUT, URL: /updateState/:idEmail, FUNCTION: updates the Email with that id
+
+Method: POST, URL: /send/, FUNCTION: receives a body with data of a just wrote email, and creates it on database
+
+Method: GET, URL: /sent:id, FUNCTION: returns a JSON with all the sent emails by the user with that id
