@@ -72,3 +72,44 @@ Method: POST, URL: /send/, FUNCTION: receives a body with data of a just wrote e
 
 Method: GET, URL: /sent:id, FUNCTION: returns a JSON with all the sent emails by the user with that id
 
+### Module 3 - "Manage Team" models:
+
+#### Invitations.
+
+#### Records.
+
+#### Estimations.
+
+### Module 3 - "Manage Team" services:
+
+#### Invitations:
+
+Method: GET, URL: /invitations, FUNCTION: returns a JSON with all the invitations registered.
+
+Method: POST, URL: /invitations, FUNCTION: receives a body with data of a invitation and creates it on the database.
+
+Method: POST, URL: /invitations/getCurrentInvitationID', FUNCTION: returns a JSON with the current invitation with that id.
+
+Method: PUT, URL: /invitations/:invitationsId', FUNCTION: receives a user and state and returns invitation.
+
+Method: POST, URL: /invitations/getCurrentInvitation', FUNCTION: receives a user and company and returns invitation.
+
+#### Records:
+
+Method: POST, URL: /records', FUNCTION: receives a body with data of a record and creates it on the database.
+
+Method: GET, URL: /records', FUNCTION: returns a JSON with all the records registered.
+
+Method: GET, URL: /records/:company', FUNCTION: receives a company and return record.
+
+Method: POST, URL: /records/getCurrentProject', FUNCTION: receives a finishDate and company and returns record.
+
+Method: POST, URL: /records/getRecordsByProject/:project', FUNCTION: receives a project and returns record.
+
+#### Estimations:
+
+Method: POST, URL: /estimations/getEstimationsByProjectManagerUsernameAndState', FUNCTION: receives a username and state and returns estimation.
+
+Method: POST, URL: /estimations/getEstimationByPMAndProject', FUNCTION: receives a username and project and returns estimation.
+
+Method: POST, URL: /estimations', FUNCTION: receives a body with data of a estimate and creates it on the database.
