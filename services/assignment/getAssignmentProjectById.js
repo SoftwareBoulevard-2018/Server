@@ -44,7 +44,7 @@ module.exports = (req, res) => {
     //const { id: receiver } = req.user;
     const { projectId } = req.params;
     Assignment
-        .find({projectId: projectId})
+        .find({project: projectId})
         .then(result => res
             .status(200)
             .json(
