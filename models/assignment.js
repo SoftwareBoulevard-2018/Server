@@ -5,14 +5,7 @@ const connection = require('./connection');
 const { Schema } = mongoose;
 
 const Assignment = new Schema({
-    projectId: {
-        type: String,
-        required: true,
-    },
-    questionId:{
-        type: String,
-        required: true,
-    },
+    
     project: {
         type: String,
         required: true,

@@ -42,9 +42,9 @@ const { Assignment } = require('../../models');
 
 module.exports = (req, res) => {
     //const { id: receiver } = req.user;
-    const { projectId } = req.params;
+    const { project } = req.params;
     Assignment
-        .find({projectId: projectId})
+        .find({project: project})
         .then(result => res
             .status(200)
             .json(
@@ -53,4 +53,4 @@ module.exports = (req, res) => {
         .catch(error => res
             .status(500)
             .json({ errors: [error.message.toUpperCase()] }));
-};
+}
