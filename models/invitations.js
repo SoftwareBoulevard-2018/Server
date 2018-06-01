@@ -19,7 +19,7 @@ const invitations = new Schema({
   state: {
     type: String,
     required: true,
-    default: 'unattended',
+    default: 'pending',
   },
 
 
