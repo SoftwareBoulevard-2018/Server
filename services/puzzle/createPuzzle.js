@@ -16,14 +16,14 @@ module.exports = (req, res) => {
 	
 	var slicedImage = [];
 	
-	var originalImage = "puzzleImages/"+filename;
+	var originalImage = "http://35.196.111.251:3000/static/puzzleImages/"+filename;
 	
 	let base64Image = imagen.split(';base64,').pop();
 	
-	fs.writeFileSync("puzzleImages/"+filename, base64Image, {encoding: 'base64'}, function(err) {
+	fs.writeFileSync("static/puzzleImages/"+filename, base64Image, {encoding: 'base64'}, function(err) {
 	});
 	
-	Jimp.read("puzzleImages/"+filename).then(image => {
+	Jimp.read("static/puzzleImages/"+filename).then(image => {
 		const w = image.bitmap.width;
         const h = image.bitmap.height;
 		var sliceWidth = w / 4;
@@ -43,13 +43,13 @@ module.exports = (req, res) => {
 				x = x+sliceWidth;
 			}
 			slice.resize(237,171);
-			slice.write("puzzleImages/"+filename2+"_"+i+ext);
+			slice.write("static/puzzleImages/"+filename2+"_"+i+ext);
 			
 		}
 	});
 	
 	for(var i=0; i<15; i++) {
-		slicedImage.push("http://35.196.111.251:3000/puzzleImages/"+filename2+"_"+i+ext);
+		slicedImage.push("http://35.196.111.251:3000/static/puzzleImages/"+filename2+"_"+i+ext);
 	}
 	
 	Puzzle
