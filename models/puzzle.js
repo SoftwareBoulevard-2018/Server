@@ -11,11 +11,9 @@ const Puzzle = new Schema({
     },
 	slicedImage: {
 		type: [String],
-		required: true
 	},
 	originalImage: {
 		type: String,
-		required: true
 	},
 });
 
