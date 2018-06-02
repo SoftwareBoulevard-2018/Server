@@ -12,7 +12,7 @@ const User = new Schema({
   },
   threshold: {
     type: Number,
-    default: 0.1,
+    required:false
   },
   username: {
     type: String,
