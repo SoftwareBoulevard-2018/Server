@@ -10,6 +10,10 @@ const User = new Schema({
     type: String,
     required: true,
   },
+  threshold: {
+    type: Number,
+    default: 0.1,
+  },
   username: {
     type: String,
     unique: true,
