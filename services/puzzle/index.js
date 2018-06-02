@@ -3,9 +3,8 @@ const express = require('express');
 const router = express.Router();
 
 const createPuzzle = require('./createPuzzle');
-const createPuzzle = require('./createPuzzleAndroid');
+const createPuzzleAndroid = require('./createPuzzleAndroid');
 const getPuzzles = require('./getPuzzles');
-const getPuzzleById = require('./getPuzzleById');
 const getPuzzleById = require('./getPuzzleById');
 const uploadImage = require('./uploadImage');
 

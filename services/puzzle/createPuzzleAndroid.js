@@ -12,7 +12,7 @@ module.exports = (req, res) => {
 
 	const ext = path.extname(imagen);
 
-	const filename2 = filename.substr(0, imagen.lastIndexOf('.'));
+	const filename2 = imagen.substr(0, imagen.lastIndexOf('.'));
 	
 	var slicedImage = [];
 	
