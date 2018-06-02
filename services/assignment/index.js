@@ -13,7 +13,7 @@ const deleteAssignment = require('./deleteAssignment');
 router.post('/createAssignment', createAssignment);
 router.put('/updateAssignment/:id', updateAssignment);
 router.get('/getAssignment', getAssignment);
-router.put('/deleteAssignment/:id', deleteAssignment);
+router.delete('/deleteAssignment/:id', deleteAssignment);
 router.get('/:project', getAssignmentProjectById);
 router.get('/:questionId', getAssignmentQuestionById);
 

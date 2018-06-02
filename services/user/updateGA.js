@@ -1,20 +1,19 @@
-const { InstantProject } = require('../../models');
+const { User } = require('../../models');
 
 module.exports = (req, res) => {
-  const { id } = req.params;
+  const { userId } = req.params;
   // const { id: sender } = req.user;
-
   // TODO check whether client information is sanitize;
   // Check that receivers are allowed;
 
-  InstantProject
-    .findByIdAndUpdate(id, req.body)
+  User
+    .findByIdAndUpdate(userId, req.body)
     .then((data) => {
       if (!data) {
         res
           .status(404)
           .json({
-            errors: ['BiddingProject_NOT_FOUND'],
+            errors: ['USER_NOT_FOUND'],
           });
         return;
       }

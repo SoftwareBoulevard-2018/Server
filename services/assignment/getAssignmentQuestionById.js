@@ -8,7 +8,7 @@ module.exports = (req, res) => {
         .then(result => res
             .status(200)
             .json(
-                result.map(o => o.toObject()),
+                result.map(o => o.toObject())
             ))
         .catch(error => res
             .status(500)
