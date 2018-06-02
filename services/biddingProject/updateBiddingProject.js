@@ -1,14 +1,14 @@
 const { BiddingProject } = require('../../models');
 
 module.exports = (req, res) => {
-  const { name } = req.params;
+  const { id } = req.params;
   // const { id: sender } = req.user;
 
   // TODO check whether client information is sanitize;
   // Check that receivers are allowed;
 
   BiddingProject
-    .findByIdAndUpdate(name, req.body)
+    .findByIdAndUpdate(id, req.body)
     .then((data) => {
       if (!data) {
         res
