@@ -1,24 +1,20 @@
-const { Email } = require('../../models');
+const { User } = require('../../models');
 
 module.exports = (req, res) => {
-  const { emailId } = req.params;
-  const { id: userId } = req.user;
-
-  Email
-    .findById(emailId)
-    .select(Email.publicFields())
+  const { username } = req.params;
+  // const { id: userId } = req.user;
+  User
+    .findOne({ username })
     .then((data) => {
       if (!data) {
         res
           .status(404)
           .json({
-            errors: ['EMAIL_NOT_FOUND'],
+            errors: ['USER_NOT_FOUND', username],
           });
-
         return;
       }
-
-      if ((data.sender !== userId) || (!data.receiver.find(r => r === userId))) {
+      /* if ((data.sender !== userId) || (!data.receiver.find(r => r === userId))) {
         res
           .status(401)
           .json({
@@ -26,13 +22,11 @@ module.exports = (req, res) => {
           });
 
         return;
-      }
-
-      const email = data.toObject();
-
+      } */
+      const user = data.toObject();
       res
         .status(200)
-        .json(email);
+        .json(user);
     })
     .catch((error) => {
       res

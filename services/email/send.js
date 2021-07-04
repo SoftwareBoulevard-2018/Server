@@ -1,32 +1,30 @@
+const { check } = require('express-validator/check');
+
+const bodyValidation = require('../../helpers/bodyValidation');
 const { Email } = require('../../models');
-const { checkSchema } = require('express-validator/check');
 
 
-/*module.exports= [checkSchema({
-  sender :{
+const sendValidation = [
+  check('subject')
+    .not()
+    .isEmpty()
+    .withMessage('Subject can\'t empty'),
+  check('content')
+    .not()
+    .isEmpty()
+    .withMessage('Content can\'t be empty'),
+  check('receivers')
+    .not()
+    .isEmpty()
+    .isArray()
+    .matches(/^[a-fA-F0-9]{24}$/)
+    .withMessage('Receivers are not in the correct format'),
+  bodyValidation,
+];
 
-  },
-  subject:{
-    isLength:{
-      errorMessage: "Subject must at least 3 char long",
-      options:{min : 4},
-      
-    }
-  },recivers,content})]
-
-module.exports = (req, res) => {
-  const { id: sender } = req.user;
-
-  // TODO check whether client information is sanitize;
-  // Check that receivers are allowed;
-
-  req.checkBody('subject','Subject is too long or empty').len({min:1,max:90});
-  req.checkBody('content','Please insert a content').notEmpty();
-  req.checkBody('receivers','Select minimun one reciever').notEmpty();
-
-
-
+const send = (req, res) => {
   const {
+    sender,
     subject,
     receivers,
     content,
@@ -34,14 +32,13 @@ module.exports = (req, res) => {
 
   Email
     .create({
-      sender, receiver: receivers, subject, content,
+      sender, receivers, subject, content,
     })
     .then((data) => {
-      const { id } = data.toObject();
       res
         .status(200)
         .json({
-          result_send_email: id,
+          data: data.toObject(),
         });
     })
     .catch((error) => {
@@ -51,6 +48,6 @@ module.exports = (req, res) => {
           result_send_email: error && error.message ? error.message : error.toString(),
         });
     });
-};*/
+};
 
-
+module.exports = [...sendValidation, send];

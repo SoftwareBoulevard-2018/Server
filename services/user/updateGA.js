@@ -1,16 +1,13 @@
 const { User } = require('../../models');
 
 module.exports = (req, res) => {
-  // const { userId } = req.params;
-  // const { id: userId } = req.user;
-
-  const {
-    newUsername,
-    // newPassword,
-  } = req.body;
+  const { userId } = req.params;
+  // const { id: sender } = req.user;
+  // TODO check whether client information is sanitize;
+  // Check that receivers are allowed;
 
   User
-    .findOne({ username: newUsername })
+    .findByIdAndUpdate(userId, req.body)
     .then((data) => {
       if (!data) {
         res
@@ -20,16 +17,17 @@ module.exports = (req, res) => {
           });
         return;
       }
-      const user = data.toObject();
       res
         .status(200)
-        .json(user);
+        .json({
+          result: 'success',
+        });
     })
     .catch((error) => {
       res
         .status(500)
         .json({
-          error: error.toString(),
+          result: error && error.message ? error.message : error.toString(),
         });
     });
 };
